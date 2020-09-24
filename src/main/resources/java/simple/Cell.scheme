@@ -1,0 +1,103 @@
+package $1$.cells;
+
+import static java.util.Objects.requireNonNull;
+
+/**
+ * {@linkplain Cell} represents a simulated cell.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class Cell {
+	private String         name;
+	private CellShape      shape;
+	private CellMembrane[] membranes;
+	
+	private Cell(final String   		name,
+				 final CellShape		shape,
+				 final CellMembrane[]   membranes) {
+		this.name      = name;
+		this.shape     = shape;
+		this.membranes = membranes;
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link Cell}.
+     * 
+     * @param name A {@link String} with the name of the cell. It cannot be null.
+     * @param shape A {@link CellShape} with shape of the cell. It cannot be null.
+     * @param membranes An array of {@link CellMembrane} with the membranes of te cell. 
+     * 		It cannot be null.
+     * @return A new instance of Cell.
+     * @throws NullPointerException If any of the given arguments is
+     *         {@code null}.
+     * @see CellShape
+     * @see CellMembrane
+     */
+	public static Cell cell(final String         name,
+				            final CellShape      shape,
+				            final CellMembrane[] membranes) throws NullPointerException { 
+		return new Cell(requireNonNull(name), requireNonNull(shape), requireNonNull(membranes));
+	}
+
+	/**
+    * Returns the name of the cell as {@link String}.
+    *
+    * @return The name of the cell.
+    */
+	public String getName() {
+		return name;
+	}
+
+	/**
+    * Returns the {@link CellShape} of the cell.
+    *
+    * @return The shape of the cell.
+    * @see    CellShape
+    */
+	public CellShape getShape() {
+		return shape;
+	}
+
+	/**
+    * Returns the {@link CellMembrane} of the cell.
+    *
+    * @return The membrane of the cell.
+    * @see    CellMembrane
+    */
+	public CellMembrane[] getLayers() {
+		return membranes;
+	}
+	
+	/**
+    * Changes the name of the cell.
+    *
+    * @param name A {@link String} with the name of the cell. It cannot be null.
+    * @throws NullPointerException If a {@code null} name is received.
+    */
+	public void setName(String name) {
+		this.name = requireNonNull(name);
+	}
+
+	/**
+    * Changes the shape of the cell.
+    *
+    * @param shape A {@link CellShape} with the shape of the cell. It cannot be null.
+    * @throws NullPointerException If a {@code null} shape is received.
+    * @see CellShape
+    */
+	public void setShape(CellShape shape) {
+		this.shape = requireNonNull(shape);
+	}
+
+	/**
+    * Changes the membranes of the cell.
+    *
+    * @param membranes An array of {@link CellMembrane} with the membranes of the cell. It cannot be null.
+    * @throws NullPointerException If a {@code null} membranes is received.
+    * @see CellMembrane
+    */
+	public void setMembranes(CellMembrane[] membranes) {
+		this.membranes = requireNonNull(membranes);
+	}
+}

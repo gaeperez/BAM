@@ -1,0 +1,67 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.Optional;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain OnInner} represents the on inner trigger of a simulated {@link Event}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Event
+ * @see EventTrigger
+ */
+public class OnInner {
+	final private Optional<SubcellularLocation> with;
+	
+	private OnInner(final Optional<SubcellularLocation> with){
+		this.with = with;
+	}
+	
+	/**
+     * Constructs and returns an new instance of an activated {@link OnInner} trigger.
+     * 
+     * @param with The specific {@link SubcellularLocation} that triggers the event. It cannot be null.
+     * @return A new instance of an activated OnInner trigger.
+     * @throws NullPointerException If the given arguments is {@code null}.
+     * @see Event
+     * @see EventTrigger
+     * @see SubcellularLocation
+     */
+	public static OnInner with(final SubcellularLocation with) throws NullPointerException{
+		return new OnInner(Optional.of(requireNonNull(with)));
+	}
+	
+	/**
+     * Constructs and returns an new instance of an deactivated {@link OnInner} trigger.
+     * 
+     * @return A new instance of an deactivated OnInner trigger.
+     * @see Event
+     * @see EventTrigger
+     */
+	public static OnInner withNone(){
+		return new OnInner(Optional.empty());
+	}
+	
+	/**
+     * Returns the specific {@link SubcellularLocation} that triggers the event as an {@link Optional}.
+     *
+     * @return The specific subcellular location that triggers the event.
+     * @see SubcellularLocation
+     * @see Optional
+     */
+	public Optional<SubcellularLocation> getWith(){
+		return this.with;
+	}
+	
+	/**
+	 * Returns if the {@link OnInner} trigger is activated.
+	 * 
+	 * @return {@code true} if the trigger is activated, {@code false} otherwise
+	 */
+	public boolean isOnInner(){
+		return with.isPresent();
+	}
+}

@@ -1,0 +1,111 @@
+package $1$.agents.ribosomes;
+
+import static java.util.Objects.requireNonNull;
+import $1$.common.SubcellularLocation;
+import $1$.agents.Agent;
+
+/**
+ * {@linkplain Ribosome} represents a simulated ribosome.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ * @see Agent
+ */
+public class Ribosome extends Agent{
+
+	private double  diffusionRate;
+	private String  mRNA;
+
+	private Ribosome(final String              name,
+					 final double 		       molecularWeight, 
+					 final double  			   radius,
+					 final String  			   color, 
+					 final SubcellularLocation maxMembraneToInner,
+					 final SubcellularLocation minMembraneToInner,
+					 final String              cellOfCreation,
+					 final SubcellularLocation membraneOfCreation,
+					 final double              diffusionRate,
+					 final String              mRNA) {
+		super(name, molecularWeight, radius, color, maxMembraneToInner, minMembraneToInner, 
+		     cellOfCreation, membraneOfCreation);		      
+		this.diffusionRate = diffusionRate;
+		this.mRNA          = mRNA;
+	}
+
+    /**
+     * Constructs and returns a new instance of {@link Ribosome}.
+     * 
+     * @param name A {@link String} with the name of the ribosome. It cannot be null.
+     * @param molecularWeight A {@link Double} with the molecular weight. It cannot be null.
+     * @param radius A {@link Double} with the radius of the ribosome. It cannot be null.
+     * @param color A {@link String} with the color of the ribosome. It cannot be null.
+     * @param maxMembraneToInner A {@link SubcellularLocation} with the maximum membrane to inner. 
+     * 		It cannot be null.
+     * @param minMembraneToInner A {@link SubcellularLocation} with the minimum membrane to inner. 
+     * 		It cannot be null.
+     * @param cellOfCreation A {@link String} with the cell of creation of the ribosome. 
+     * 		It cannot be null.
+     * @param membraneOfCreation A {@link SubcellularLocation} with the membrane of creation of the 
+     * 		ribosome. It cannot be null.
+     * @param diffusionRate A {@link Double} with the diffusion rate of the ribosome. 
+     * 		It cannot be null.
+     * @param mRNA A {@link String} with the mRNA of the ribosome. It cannot be null.
+     * @return A new instance of Ribosome.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see Agent
+     * @see SubcellularLocation
+     */
+    public static Ribosome ribosome(final String              name,
+									final double 		      molecularWeight, 
+									final double  			  radius,
+									final String  			  color, 
+									final SubcellularLocation maxMembraneToInner,
+									final SubcellularLocation minMembraneToInner,
+									final String              cellOfCreation,
+									final SubcellularLocation membraneOfCreation,
+									final double	          diffusionRate,
+									final String              mRNA) throws NullPointerException {
+		return new Ribosome(requireNonNull(name), requireNonNull(molecularWeight), requireNonNull(radius),
+							requireNonNull(color), requireNonNull(maxMembraneToInner), requireNonNull(minMembraneToInner), 
+							requireNonNull(cellOfCreation), requireNonNull(membraneOfCreation), requireNonNull(diffusionRate), 
+							requireNonNull(mRNA));
+    }
+
+    /**
+     * Returns the diffusion rate of the ribosome as {@link Double}.
+     *
+     * @return The diffusion rate of the ribosome.
+     */
+ 	public double getDiffusionRate() {
+ 		return diffusionRate;
+ 	}
+
+ 	/**
+     * Changes the diffusion rate of the ribosome.
+     *
+     * @param diffusionRate A {@link Double} with the diffusion rate of the ribosome.
+     * @throws NullPointerException If a {@code null} diffusionRate is received.
+     */
+ 	public void setDiffusionRate(final double diffusionRate) throws NullPointerException {
+ 		this.diffusionRate = requireNonNull(diffusionRate);
+ 	}
+
+    /**
+     * Returns the mRNA of the ribosome as {@link String}.
+     *
+     * @return The mRNA of the ribosome.
+     */
+	public String getmRNA() {
+		return mRNA;
+	}
+
+ 	/**
+     * Changes the mRNA of the ribosome.
+     *
+     * @param mRNA A {@link String} with the mRNA of the ribosome.
+     * @throws NullPointerException If a {@code null} mRNA is received.
+     */
+	public void setmRNA(final String mRNA) throws NullPointerException {
+		this.mRNA = requireNonNull(mRNA);
+	}
+}

@@ -1,0 +1,38 @@
+package $5$.containers;
+
+import static $5$.$6$.$1$.$2$;
+
+import java.util.ArrayList;
+import java.util.List;
+import $5$.common.SubcellularLocation;
+import $5$.agents.molecules.buildingblocks.*;
+import $5$.agents.molecules.macromolecules.*;
+import $5$.agents.molecules.lzws.*;
+
+import $5$.$6$.*;
+$4$
+
+/**
+ * {@linkplain $1$Container} represents a {@link $1$} container.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see $1$
+ */
+public class $1$Container extends SimpleContainer<$1$>{
+
+	private $1$Container(final List<$1$> list) {
+		super(list);
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link $1$Container}.
+     * 
+     * @return A new instance of $1$Container.
+     */		
+	public static $1$Container $2$Container(){
+		final List<$1$> list = new ArrayList<>();
+		$3$;
+		return new $1$Container(list);
+	}		
+}

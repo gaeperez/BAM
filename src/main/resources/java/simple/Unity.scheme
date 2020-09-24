@@ -1,0 +1,124 @@
+package $1$.general;
+
+import static java.util.Objects.requireNonNull;
+import $1$.common.DiffusionRate;
+
+/**
+ * {@linkplain Unity} represents the unity of the simulation.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class Unity {
+
+	private String        name;
+	private double        molecularWeight;
+	private double        radius;
+	private DiffusionRate diffusionRate;
+
+	private Unity(final String name,
+			      final double molecularWeight,
+			      final double radius,
+			      final DiffusionRate diffusionRate) {
+		this.name			 = name;
+		this.molecularWeight = molecularWeight;
+		this.radius			 = radius;
+		this.diffusionRate 	 = diffusionRate;
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link Unity}.
+     * 
+     * @param name A {@link String} with the name of the unity. It cannot be null.
+     * @param molecularWeight A {@link Double} with the molecular weight of the unity. It cannot be null.
+     * @param radius A {@link Double} with the radius of the unity. It cannot be null.
+     * @param diffusionRate the {@link DiffusionRate} of the unity. It cannot be null.
+     * @return A new instance of Unity.
+     * @throws NullPointerException If any of the given arguments is
+     *         {@code null}.
+     */
+	public static Unity unity(final String name,
+						      final double molecularWeight,
+						      final double radius,
+						      final DiffusionRate diffusionRate) throws NullPointerException{
+		return new Unity(requireNonNull(name), requireNonNull(molecularWeight),
+				         requireNonNull(radius), requireNonNull(diffusionRate));
+	}
+
+	/**
+     * Returns the name of the unity as a {@link String}.
+     *
+     * @return The name of the unity.
+     */
+	public String getName() {
+		return name;
+	}
+
+	/**
+     * Returns the molecular weight of the unity as a {@link Double}.
+     *
+     * @return The molecular weight of the unity.
+     */
+	public double getMolecularWeight() {
+		return molecularWeight;
+	}
+
+	/**
+     * Returns the radius of the unity as a {@link Double}.
+     *
+     * @return The radius of the unity.
+     */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+     * Returns the {@link DiffusionRate} of the unity.
+     *
+     * @return The diffusion rate of the unity.
+     * @see DiffusionRate
+     */
+	public DiffusionRate getDiffusionRate() {
+		return diffusionRate;
+	}
+
+	/**
+    * Changes the name of the unity.
+    *
+    * @param name A {@link String} with the name of the unity. It cannot be null.
+    * @throws NullPointerException If a {@code null} name is received.
+    */
+	public void setName(final String name) throws NullPointerException {
+		this.name = requireNonNull(name);
+	}
+
+	/**
+    * Changes the width of the unity.
+    *
+    * @param molecularWeight A {@link Double} with the molecular weight of the unity. It cannot be null.
+    * @throws NullPointerException If a {@code null} molecular weight is received.
+    */
+	public void setMolecularWeight(final double molecularWeight) throws NullPointerException {
+		this.molecularWeight = requireNonNull(molecularWeight);
+	}
+
+	/**
+    * Changes the radius of the unity.
+    *
+    * @param radius A {@link Double} with the radius of the unity. It cannot be null.
+    * @throws NullPointerException If a {@code null} radius is received.
+    */
+	public void setRadius(final double radius) throws NullPointerException {
+		this.radius = requireNonNull(radius);
+	}
+
+	/**
+    * Changes the diffusion rate of the unity.
+    *
+    * @param diffusionRate The {@link DiffusionRate} of the unity. It cannot be null.
+    * @throws NullPointerException If a {@code null} diffusion rate is received.
+    */
+	public void setDiffusionRate(final DiffusionRate diffusionRate) throws NullPointerException {
+		this.diffusionRate = requireNonNull(diffusionRate);
+	}
+}

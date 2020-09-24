@@ -1,0 +1,42 @@
+package $1$.agents.molecules;
+
+import java.util.Optional;
+
+import $1$.agents.Agent;
+import $1$.cells.Cell;
+import $1$.common.DiffusionRate;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain Molecule} represents a simulated molecule.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ * @see Agent
+ */
+public abstract class Molecule extends Agent{
+	final private DiffusionRate     diffusionRate;
+	
+	protected Molecule(final double 		              molecularWeight, 
+					final double  			              radius,
+					final String  			              color, 
+					final SubcellularLocation             maxMembraneToInner,
+					final SubcellularLocation             maxMembraneToOuter,
+					final Optional<Class<? extends Cell>> cellOfCreation,
+					final SubcellularLocation             membraneOfCreation,
+				    final DiffusionRate                   diffusionRate){
+		super(molecularWeight, radius, color, maxMembraneToInner, maxMembraneToOuter, 
+			      cellOfCreation, membraneOfCreation);
+		this.diffusionRate = diffusionRate;
+	}
+
+	/**
+    * Returns the {@link DiffusionRate} of the molecule.
+    *
+    * @return The diffusion rate of the molecule.
+    * @see    DiffusionRate
+    */
+	public DiffusionRate getDiffusionRate() {
+		return diffusionRate;
+	}
+}

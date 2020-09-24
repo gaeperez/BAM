@@ -1,0 +1,361 @@
+package $1$.general;
+
+import static java.util.Objects.requireNonNull;
+
+/**
+ * {@linkplain GeneralConfiguration} represents the general configuration of the simulation.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class GeneralConfiguration {
+
+	private Integer  numberOfProccesorsCreation;
+	private Integer  numberOfProccesors;
+	private Integer  totalTries;
+	private String   dirOutput;
+	private String   fileOutput;
+	private String   simulationName;
+	private String[] emailTo;
+	private boolean  activateGUI;
+	private String   readFromCheckpoint;
+	private Integer  numberOfJobs;
+	private Integer  numberOfSteps;
+	private Integer  saveSimulationEvery;
+	private Integer  writeResultsEvery;
+
+	private GeneralConfiguration(final Integer  numberOfProccesorsCreation,
+								 final Integer  numberOfProccesors, 
+								 final Integer  totalTries, 
+								 final String   dirOutput,
+								 final String   fileOutput, 
+								 final String   simulationName, 
+								 final String[] emailTo, 
+								 final boolean  activateGUI, 
+								 final String   readFromCheckpoint,
+								 final Integer  numberOfJobs, 
+								 final Integer  numberOfSteps,
+								 final Integer  saveSimulationEvery, 
+								 final Integer  writeResultsEvery) {
+		this.numberOfProccesorsCreation = numberOfProccesorsCreation;
+		this.numberOfProccesors         = numberOfProccesors;
+		this.totalTries					= totalTries;
+		this.dirOutput 					= dirOutput;
+		this.fileOutput 				= fileOutput;
+		this.simulationName 			= simulationName;
+		this.emailTo 					= emailTo;
+		this.activateGUI 				= activateGUI;
+		this.readFromCheckpoint 		= readFromCheckpoint;
+		this.numberOfJobs 				= numberOfJobs;
+		this.numberOfSteps 				= numberOfSteps;
+		this.saveSimulationEvery 		= saveSimulationEvery;
+		this.writeResultsEvery 			= writeResultsEvery;
+	}
+	
+    /**
+     * Constructs and returns a new instance of {@link GeneralConfiguration}.
+     * 
+     * @param numberOfProccesorsCreation A {@link Integer} with the number of proccesors of creation 
+     * 		of the simulation. It cannot be null.
+     * @param numberOfProccesors A {@link Integer} with the number of proccesors of the simulation. 
+     * 		It cannot be null.
+     * @param totalTries A {@link Integer} with the total tries of the simulation. It cannot be null.
+     * @param dirOutput A {@link String} with the output directory of the simulation. It cannot be null.
+     * @param fileOutput A {@link String} with the output filename of the simulation. It cannot be null.
+     * @param simulationName A {@link String} with the name of the simulation. It cannot be null.
+     * @param emailTo An array of {@link String} with the email(s) of contact of the simulation.
+     * 		It cannot be null.
+     * @param activateGUI A {@link Boolean} with the activation of the IU of the simulation. It cannot be null.
+     * @param readFromCheckpoint A {@link String} with the checkpoint to load of the simulation. 
+     * 		It cannot be null.
+     * @param numberOfJobs A {@link Integer} with the number of jobs of the simulation. It cannot be null.
+     * @param numberOfSteps A {@link Integer} with the number of steps of the simulation. It cannot be null.
+     * @param saveSimulationEvery A {@link Integer} with the number ofsteps to save the simulation. 
+     * 		It cannot be null.
+     * @param writeResultsEvery A {@link Integer} with the number of steps to write the results of
+     *      the simulation. It cannot be null.
+     * @return A new instance of GeneralConfiguration.
+     * @throws NullPointerException If any of the given arguments is
+     *         {@code null}.
+     */
+	public static GeneralConfiguration generalConfiguration(final Integer  numberOfProccesorsCreation,
+															final Integer  numberOfProccesors, 
+															final Integer  totalTries, 
+															final String   dirOutput,
+															final String   fileOutput, 
+															final String   simulationName, 
+															final String[] emailTo, 
+															final boolean  activateGUI, 
+															final String   readFromCheckpoint,
+															final Integer  numberOfJobs, 
+															final Integer  numberOfSteps,
+															final Integer  saveSimulationEvery, 
+															final Integer  writeResultsEvery) throws NullPointerException {
+		return new GeneralConfiguration(requireNonNull(numberOfProccesorsCreation), requireNonNull(numberOfProccesors), 
+									    requireNonNull(totalTries), requireNonNull(dirOutput), 
+									    requireNonNull(fileOutput), requireNonNull(simulationName), 
+									    requireNonNull(emailTo), requireNonNull(activateGUI), requireNonNull(readFromCheckpoint),
+									    requireNonNull(numberOfJobs), requireNonNull(numberOfSteps), 
+									    requireNonNull(saveSimulationEvery), requireNonNull(writeResultsEvery));
+	}
+
+	/**
+     * Returns the number of processors used during agent creation as a {@link Integer}.
+     *
+     * @return The number of processors used during agent creation.
+     */
+	public Integer getProcCreation() {
+		return numberOfProccesorsCreation;
+	}
+
+	/**
+     * Returns the number of processors used during simulation as a {@link Integer}.
+     *
+     * @return The number of processors used during simulation.
+     */
+	public Integer getProcSim() {
+		return numberOfProccesors;
+	}
+
+	/**
+     * Returns the number of total tries of the simulation as a {@link Integer}.
+     *
+     * @return The number of total tries of the simulation.
+     */
+	public Integer getTotalTries() {
+		return totalTries;
+	}
+
+	/**
+	 * Returns if the UI is activated
+	 * 
+	 * @return {@code true} if the UI is activated, {@code false} otherwise
+	 */
+	public boolean isActivateGUI() {
+		return activateGUI;
+	}
+
+	/**
+     * Returns the checkpoint to load as a {@link String}.
+     *
+     * @return The checkpoint to load.
+     */
+	public String getReadFromCheckpoint() {
+		return readFromCheckpoint;
+	}
+
+	/**
+     * Returns the number of repetitions of the simulation as a {@link Integer}.
+     *
+     * @return The number of repetitions of the simulation.
+     */
+	public Integer getNumberOfJobs() {
+		return numberOfJobs;
+	}
+
+	/**
+     * Returns the number of steps for the simulation as a {@link Integer}.
+     *
+     * @return The number of steps for the simulation.
+     */
+	public Integer getNumberOfSteps() {
+		return numberOfSteps;
+	}
+
+	/**
+     * Returns the number of steps for autosave the data as a {@link Integer}.
+     *
+     * @return The number of steps for autosave the data.
+     */
+	public Integer getSaveSimEvery() {
+		return saveSimulationEvery;
+	}
+	
+	/**
+     * Returns the number of steps for write results as a {@link Integer}.
+     *
+     * @return The number of steps for write results.
+     */
+	public Integer getWriteResultsEvery() {
+		return writeResultsEvery;
+	}
+
+	/**
+     * Returns the output folder as a {@link String}.
+     *
+     * @return The output folder.
+     */
+	public String getDirOutput() {
+		return dirOutput;
+	}
+
+	/**
+     * Returns the output filename as a {@link String}.
+     *
+     * @return The output filename.
+     */
+	public String getFileOutput() {
+		return fileOutput;
+	}
+
+	/**
+     * Returns the simulation name as a {@link String}.
+     *
+     * @return The simulation name.
+     */
+	public String getSimName() {
+		return simulationName;
+	}
+	
+	/**
+     * Returns the email(s) of contact as an array of {@link String}.
+     *
+     * @return The email(s) of contact.
+     */
+	public String[] getEmailTo() {
+		return emailTo;
+	}
+
+	/**
+    * Changes the number of processor for creation the simulation.
+    *
+    * @param numberOfProccesorsCreation A {@link Integer} with the number of processor for creation the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} numberOfProccesorsCreation is received.
+    */
+	public void setNumberOfProccesorsCreation(final Integer numberOfProccesorsCreation) throws NullPointerException {
+		this.numberOfProccesorsCreation = requireNonNull(numberOfProccesorsCreation);
+	}
+
+	/**
+    * Changes the number of processor of the simulation.
+    *
+    * @param numberOfProccesors A {@link Integer} with the number of processor of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} numberOfProccesors is received.
+    */
+	public void setNumberOfProccesors(final Integer numberOfProccesors) throws NullPointerException {
+		this.numberOfProccesors = requireNonNull(numberOfProccesors);
+	}
+
+	/**
+    * Changes the number of total tries of the simulation.
+    *
+    * @param totalTries A {@link Integer} with the number of total tries of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} totalTries is received.
+    */
+	public void setTotalTries(final Integer totalTries) throws NullPointerException {
+		this.totalTries = requireNonNull(totalTries);
+	}
+
+	/**
+    * Changes the output directory of the simulation.
+    *
+    * @param dirOutput A {@link String} with the output directory of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} dirOutput is received.
+    */
+	public void setDirOutput(final String dirOutput) throws NullPointerException {
+		this.dirOutput = requireNonNull(dirOutput);
+	}
+
+	/**
+    * Changes the output filename the simulation.
+    *
+    * @param fileOutput A {@link String} with the output filename of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} fileOutput is received.
+    */
+	public void setFileOutput(final String fileOutput) throws NullPointerException {
+		this.fileOutput = requireNonNull(fileOutput);
+	}
+
+	/**
+    * Changes the name of the simulation.
+    *
+    * @param simulationName A {@link String} with the name of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} simulationName is received.
+    */
+	public void setSimulationName(final String simulationName) throws NullPointerException {
+		this.simulationName = requireNonNull(simulationName);
+	}
+
+	/**
+    * Changes the email(s) of contact of the simulation.
+    *
+    * @param emailTo An array of {@link String} with the email(s) of contact of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} emailTo is received.
+    */
+	public void setEmailTo(final String[] emailTo) throws NullPointerException {
+		this.emailTo = requireNonNull(emailTo);
+	}
+
+	/**
+    * Changes the activation of the UI in the simulation.
+    *
+    * @param activateGUI A {@link Boolean} with the activation of the UI in the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} activateGUI is received.
+    */
+	public void setActivateGUI(final boolean activateGUI) throws NullPointerException {
+		this.activateGUI = requireNonNull(activateGUI);
+	}
+
+	/**
+    * Changes the checkpoint from read the simulation.
+    *
+    * @param readFromCheckpoint A {@link String} with the checkpoint from read the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} readFromCheckpoint is received.
+    */
+	public void setReadFromCheckpoint(final String readFromCheckpoint) throws NullPointerException {
+		this.readFromCheckpoint = requireNonNull(readFromCheckpoint);
+	}
+
+	/**
+    * Changes the number of jobs of the simulation.
+    *
+    * @param numberOfJobs A {@link Integer} with the number of jobs of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} numberOfJobs is received.
+    */
+	public void setNumberOfJobs(final Integer numberOfJobs) throws NullPointerException {
+		this.numberOfJobs = requireNonNull(numberOfJobs);
+	}
+
+	/**
+    * Changes the number of steps of the simulation.
+    *
+    * @param numberOfSteps A {@link Integer} with the number of steps of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} numberOfSteps is received.
+    */
+	public void setNumberOfSteps(final Integer numberOfSteps) throws NullPointerException {
+		this.numberOfSteps = requireNonNull(numberOfSteps);
+	}
+
+	/**
+    * Changes the number of steps for save the simulation.
+    *
+    * @param saveSimulationEvery A {@link Integer} with the the number of steps for save the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} saveSimulationEvery is received.
+    */
+	public void setSaveSimulationEvery(final Integer saveSimulationEvery) throws NullPointerException {
+		this.saveSimulationEvery = requireNonNull(saveSimulationEvery);
+	}
+
+	/**
+    * Changes the number of of steps for save the results of the simulation.
+    *
+    * @param writeResultsEvery A {@link Integer} with the number of of steps for save the results of the simulation. 
+    *        It cannot be null.
+    * @throws NullPointerException If a {@code null} writeResultsEvery is received.
+    */
+	public void setWriteResultsEvery(final Integer writeResultsEvery) throws NullPointerException {
+		this.writeResultsEvery = requireNonNull(writeResultsEvery);
+	}
+}

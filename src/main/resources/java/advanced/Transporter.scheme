@@ -1,0 +1,37 @@
+package $14$.transporters;
+
+import $14$.agents.molecules.macromolecules.*;
+import $14$.agents.molecules.buildingblocks.*;
+import $14$.agents.molecules.lzws.*;
+import $14$.agents.molecules.Molecule;
+import $14$.cells.*;
+import $14$.common.SubcellularLocation;
+
+/**
+ * {@linkplain $1$} represents a $1$ {@link Transporter}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Transporter
+ */
+
+public class $1$ extends Transporter{
+
+	@SuppressWarnings("unchecked")
+	private $1$() {
+		super($3$.class, $4$, $5$, "$6$",
+		      SubcellularLocation.$7$, SubcellularLocation.$8$, 
+		      SubcellularLocation.$8$, SubcellularLocation.$10$,
+		      TransporterType.$11$, (Class<? extends Molecule>[]) new Object[]{$12$},
+		      (Class<? extends Molecule>[]) new Object[]{$13$});
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link $1$}.
+     * 
+     * @return A new instance of $1$.
+     */	
+	public static $1$ $2$(){
+		return new $1$();
+	}	
+}

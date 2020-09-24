@@ -1,0 +1,35 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+
+/**
+ * {@linkplain Event} represents a simulated event.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+abstract class Event {
+	private String target;
+	
+	protected Event (final String target){
+		this.target = target;
+	}
+
+	/**
+     * Returns the event target as {@link String}.
+     *
+     * @return The event target.
+     */
+	public String getTarget() {
+		return target;
+	}
+
+	/** Changes the event target.
+    *
+    * @param target A {@link String} as the event target.
+    * @throws NullPointerException If a {@code null} target is received.
+    */
+	public void setTarget(final String target) throws NullPointerException {
+		this.target = requireNonNull(target);
+	}
+}

@@ -1,0 +1,27 @@
+package $5$.cells;
+
+import static $5$.cells.CellMembrane.cellMembrane;
+import $5$.common.SubcellularLocation;
+
+/**
+ * {@linkplain $1$} represents a $1$ {@link Cell}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Cell
+ */
+public class $1$ extends Cell{
+
+	private $1$() {
+		super(CellShape.$3$, new CellMembrane[]{$4$});
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link $1$}.
+     * 
+     * @return A new instance of $1$.
+     */
+	public static $1$ $2$(){
+		return new $1$();
+	}	
+}

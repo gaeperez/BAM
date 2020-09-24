@@ -1,0 +1,12 @@
+*iml
+*bak
+*mwb
+*log
+.settings
+.idea
+.project
+logs
+doc
+.classpath
+target
+!*.sql

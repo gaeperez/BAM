@@ -1,0 +1,45 @@
+package $1$.agents.molecules.lzws;
+
+import java.util.Optional;
+
+import $1$.agents.Agent;
+import $1$.agents.molecules.Molecule;
+import $1$.cells.Cell;
+import $1$.common.DiffusionRate;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain LZW} represents a simulated LZW (Low Molecular Weight).
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ * @see Molecule
+ * @see Agent
+ */
+public abstract class LZW extends Molecule{
+	final private LZWType type;  
+
+	protected LZW(final double 		                    molecularWeight, 
+			      final double  			            radius,
+			      final String  			            color, 
+			      final SubcellularLocation             maxMembraneToInner,
+			      final SubcellularLocation             maxMembraneToOuter,
+			      final Optional<Class<? extends Cell>> cellOfCreation,
+			      final SubcellularLocation             membraneOfCreation,
+			      final DiffusionRate                   diffusionRate,
+			      final LZWType                         type) {
+		super(molecularWeight, radius, color, maxMembraneToInner, maxMembraneToOuter, 
+		      cellOfCreation, membraneOfCreation, diffusionRate);
+		this.type = type;
+	}
+	
+	/**
+	 * Returns the {@link LZWType}.
+	 * 
+	 * @return The LZW type.
+	 * @see LZW
+	 */
+	public LZWType getType(){
+		return type;
+	}
+}

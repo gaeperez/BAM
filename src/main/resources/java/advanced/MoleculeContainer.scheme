@@ -1,0 +1,98 @@
+package $2$.containers;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import $2$.agents.molecules.*;
+import $2$.agents.molecules.buildingblocks.*;
+import $2$.agents.molecules.lzws.*;
+import $2$.agents.molecules.macromolecules.*;
+
+/**
+ * {@linkplain MoleculeContainer} represents a {@link Molecule} container.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Molecule
+ */
+
+public class MoleculeContainer extends AdvancedContainer<Molecule>{
+	private final List<Macromolecule> macromolecules;
+	private final List<BuildingBlock> buildingBlocks;
+	private final List<LZW>			  lzws;
+	
+	private MoleculeContainer(final Map<Class<? extends Molecule>, List<? extends Molecule>> map,
+						      final List<Molecule>                                           list,
+						      final List<Macromolecule> 									 macromolecules,
+						      final List<BuildingBlock> 									 buildingBlocks,
+						      final List<LZW>           									 lzws) {
+		super(map, list);
+		this.macromolecules = macromolecules;
+		this.buildingBlocks = buildingBlocks;
+		this.lzws           = lzws;
+	}
+	
+	/**
+	* Constructs and returns a new instance of {@link CellContainer}.
+	* 
+	* @return A new instance of CellContainer.
+	*/		
+	public static MoleculeContainer moleculeContainer(){
+		final Map<Class<? extends Molecule>, List<? extends Molecule>> map = new HashMap<>();		
+		final List<Macromolecule> macromolecules = new ArrayList<>();
+		final List<BuildingBlock> buildingBlocks = new ArrayList<>();
+		final List<LZW>           lzws           =new ArrayList<>();
+		
+$1$		return new MoleculeContainer(map, new ArrayList<>(), macromolecules, buildingBlocks, lzws);
+	}
+	
+	/**
+     * Returns the {@link List} of all elements.
+     *
+     * @return The list of all elements.
+     * @see    List
+     */
+	@Override
+	public List<Molecule> getList(){
+		final List<Molecule> list = new ArrayList<>();
+		list.addAll(macromolecules);
+		list.addAll(buildingBlocks);
+		list.addAll(lzws);
+		return list;
+	}
+	
+	/**
+     * Returns the {@link List} of all {@link Macromolecule}.
+     *
+     * @return The list of all macromolecules.
+     * @see    List
+     * @see    Macromolecule
+     */
+	public List<Macromolecule> getMacromoleculesList(){
+		return macromolecules;
+	}
+	
+	/**
+     * Returns the {@link List} of all {@link BuildingBlock}.
+     *
+     * @return The list of all buildingBlocks.
+     * @see    List
+     * @see    BuildingBlock
+     */
+	public List<BuildingBlock> getBuildingBlocksList(){
+		return buildingBlocks;
+	}
+	
+	/**
+     * Returns the {@link List} of all {@link LZW}.
+     *
+     * @return The list of all LZWs.
+     * @see    List
+     * @see    LZW
+     */
+	public List<LZW> getLZWsList(){
+		return lzws;
+	}
+}

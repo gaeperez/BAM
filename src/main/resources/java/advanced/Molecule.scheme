@@ -1,0 +1,31 @@
+package $13$.agents.molecules.$14$;
+
+import static $13$.common.DiffusionRate.diffusionRate;
+
+import java.util.Optional;
+import $13$.common.SubcellularLocation;
+import $13$.cells.*;
+
+
+/**
+ * {@linkplain $1$} represents a $1$ {@link $12$}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see $12$
+ */
+public class $1$ extends $12${
+
+	public $1$() {
+		super($3$, $4$, "$5$", SubcellularLocation.$6$, SubcellularLocation.$7$,
+		      $8$, SubcellularLocation.$9$, diffusionRate($10$), $12$Type.$11$);
+	}
+	/**
+     * Constructs and returns a new instance of {@link $1$}.
+     * 
+     * @return A new instance of $1$.
+     */	
+	public static $1$ $2$(){
+		return new $1$();
+	}	
+}

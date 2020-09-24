@@ -1,0 +1,52 @@
+package $4$.general;
+
+/**
+ * {@linkplain Environment} represents the environment of the simulation.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class Environment {
+
+	final private double width  = $1$;
+	final private double height = $2$;
+	final private double length = $3$;
+
+	private Environment() { }
+	
+	/**
+     * Constructs and returns a new instance of {@link Environment}.
+     *
+     * @return A new instance of Environment.
+     */
+	public static Environment environment(){
+		return new Environment();
+	}
+
+	/**
+     * Returns the width of the environment as a {@link Double}.
+     *
+     * @return The width of the environment.
+     */
+	public double getWidth() {
+		return width;
+	}
+
+	/**
+     * Returns the height of the environment as a {@link Double}.
+     *
+     * @return The height of the environment.
+     */
+	public double getHeight() {
+		return height;
+	}
+
+	/**
+     * Returns the length of the environment as a {@link Double}.
+     *
+     * @return The length of the environment.
+     */
+	public double getLength() {
+		return length;
+	}
+}

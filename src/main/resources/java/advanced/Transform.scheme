@@ -1,0 +1,62 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+import $1$.agents.molecules.Molecule;
+
+/**
+ * {@linkplain Transform} represents a simulated transform {@link Event}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Event
+ */
+public class Transform extends Event{
+	final private Class<? extends Molecule> output;
+	final private EventTrigger              trigger;
+
+	private Transform(final Class<? extends Molecule> target, 
+					  final Class<? extends Molecule> output, 
+					  final EventTrigger              trigger) {
+		super(target);
+		this.output  = output;
+		this.trigger = trigger;
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link Transform}.
+     * 
+     * @param target A {@link Molecule} class as the event target. It cannot be null.
+     * @param output A {@link Molecule} class as the output of the transform. It cannot be null.
+     * @param trigger The {@link EventTrigger}. It cannot be null.
+     * @return A new instance of Transform.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see EventTrigger
+     * @see Molecule
+     */	
+	public static Transform transform(final Class<? extends Molecule> target, 
+									  final Class<? extends Molecule> output, 
+									  final EventTrigger              trigger) throws NullPointerException {
+		return new Transform(requireNonNull(target), requireNonNull(output), requireNonNull(trigger));
+	}
+	
+	/**
+     * Returns the event {@link Molecule} output class.
+     *
+     * @return The event molecule output.
+     * @see    Molecule
+     */
+	public Class<? extends Molecule> getOutput() {
+		return output;
+	}
+	
+	/**
+     * Returns the {@link EventTrigger}.
+     *
+     * @return The event trigger.
+     * @see    EventTrigger
+     */
+	public EventTrigger getTrigger() {
+		return trigger;
+	}
+
+}

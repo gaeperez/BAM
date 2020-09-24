@@ -1,0 +1,28 @@
+package $1$.feeders;
+
+/**
+ * {@linkplain FeederType} represents the type of an {@link Feeder}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Feeder
+ */
+public enum FeederType {
+	CONTINUOUS("Continuous"),
+	NON_CONTINUOUS("Non continuous");
+
+    private final String type;
+    
+    private FeederType(final String type){
+    	this.type = type;
+    }
+    
+    /**
+     * Returns the type of the {@code Feeder} as {@link String}.
+     *
+     * @return The type of the feeder.
+     */
+    public String getType(){
+    	return this.type;
+    }
+}

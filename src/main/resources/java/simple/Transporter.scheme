@@ -1,0 +1,329 @@
+package $1$.transporters;
+
+import static java.util.Objects.requireNonNull;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain Transporter} represents a simulated transporter.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ */
+public class Transporter {
+
+	private String              name;
+	private String         	    cell;
+	private double              radius;
+	private double              diffusionRate;
+	private String              color;
+	private SubcellularLocation entranceMembrane;
+	private SubcellularLocation exitMembrane;
+	private SubcellularLocation membraneToGetFrom;
+	private SubcellularLocation membraneToPutTo;
+	private TransporterType     type;
+	private String[]            inputs;
+	private String[]            outputs;
+
+	private Transporter(final String              name,
+						final String              cell, 
+						final double              radius,
+						final double              diffusionRate, 
+					    final String              color, 
+						final SubcellularLocation entranceMembrane,
+						final SubcellularLocation exitMembrane,
+					    final SubcellularLocation membraneToGetFrom,
+						final SubcellularLocation membraneToPutTo,
+						final TransporterType     type, 
+						final String[]            inputs,
+						final String[]            outputs) {
+		this.name              = name;
+		this.cell              = cell;
+		this.radius 	       = radius;
+		this.diffusionRate     = diffusionRate;
+		this.color             = color;
+		this.entranceMembrane  = entranceMembrane;
+		this.exitMembrane      = exitMembrane;
+		this.membraneToGetFrom = membraneToGetFrom;
+		this.membraneToPutTo   = membraneToPutTo;
+		this.type 		       = type;
+		this.inputs 	       = inputs;
+		this.outputs 	       = outputs;
+	}
+
+    /**
+     * Constructs and returns a new instance of {@link Transporter}.
+     * 
+     * @param name A {@link String} with the name of the transporter. It cannot be null.
+     * @param cell A {@link String} with the cell of the transporter. It cannot be null.
+     * @param radius A {@link Double} with the radius of the transporter. It cannot be null.
+     * @param diffusionRate A {@link Double} with the diffusion rate of the transporter. It cannot be null.
+     * @param color A {@link String} with the color of the transporter. It cannot be null.
+     * @param entranceMembrane A {@link SubcellularLocation} with the entrance membrane. 
+     * 		It cannot be null.
+     * @param exitMembrane A {@link SubcellularLocation} with the exit membrane. 
+     * 		It cannot be null.
+     * @param membraneToGetFrom A {@link SubcellularLocation} with the membrane to get molecules from.
+     * 		It cannot be null.
+     * @param membraneToPutTo A {@link SubcellularLocation} with the membrane to put molecules.
+     * 		It cannot be null.
+     * @param type The {@link TransporterType}. It cannot be null.
+     * @param inputs An array of {@link String} with the inputs. It cannot be null.
+     * @param outputs An array of {@link String} with the outputs. It cannot be null.
+     * @return A new instance of Macromolecule.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see SubcellularLocation
+     * @see TransporterType
+     */
+	public static Transporter transporter(final String              name,
+										  final String              cell, 
+										  final double              radius,
+										  final double              diffusionRate, 
+									      final String              color, 
+										  final SubcellularLocation entranceMembrane,
+										  final SubcellularLocation exitMembrane,
+									      final SubcellularLocation membraneToGetFrom,
+										  final SubcellularLocation membraneToPutTo,
+										  final TransporterType     type, 
+										  final String[]            inputs,
+										  final String[]            outputs) throws NullPointerException {
+		return new Transporter(requireNonNull(name), requireNonNull(cell), requireNonNull(radius), 
+							   requireNonNull(diffusionRate), requireNonNull(color), requireNonNull(entranceMembrane), 
+						       requireNonNull(exitMembrane), requireNonNull(membraneToGetFrom), requireNonNull(membraneToPutTo), 
+						       requireNonNull(type), requireNonNull(inputs), requireNonNull(outputs));
+	}
+
+	/**
+     * Returns the transporter name as a {@link String}.
+     *
+     * @return The transporter name.
+     */
+	public String getName() {
+		return name;
+	}
+
+	/**
+     * Returns the transporter radius as a {@link Double}.
+     *
+     * @return The transporter radius.
+     */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+     * Returns the transporter cell as a {@link String}.
+     *
+     * @return The transporter cell.
+     */
+	public String getCell() {
+		return cell;
+	}
+
+	/**
+     * Returns the transporter color as a {@link String}.
+     *
+     * @return The transporter color.
+     */
+	public String getColor() {
+		return color;
+	}
+
+	/**
+     * Returns the transporter diffusion rate as a {@link Double}.
+     *
+     * @return The transporter diffusion rate.
+     */
+	public double getDiffusionRate() {
+		return diffusionRate;
+	}
+
+	/**
+     * Returns the entrance membrane as a {@link SubcellularLocation}.
+     *
+     * @return The entrance membrane.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getEntranceMembrane() {
+		return entranceMembrane;
+	}
+
+	/**
+     * Returns the exit membrane as a {@link SubcellularLocation}.
+     *
+     * @return The exit membrane.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getExitMembrane() {
+		return exitMembrane;
+	}
+
+	/**
+     * Returns the membrane to get molecules from as a {@link SubcellularLocation}.
+     *
+     * @return The membrane to get molecules from.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMembraneToGetFrom() {
+		return membraneToGetFrom;
+	}
+
+	/**
+     * Returns the membrane to put molecules as a {@link SubcellularLocation}.
+     *
+     * @return The membrane to put molecules.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMembraneToPutTo() {
+		return membraneToPutTo;
+	}
+	
+	/**
+     * Returns the {@link TransporterType}.
+     *
+     * @return The transporter type.
+     * @see TransporterType
+     */
+	public TransporterType getType() {
+		return type;
+	}
+	
+	/**
+     * Returns the transporter inputs as an array of {@link String}.
+     *
+     * @return The transporter inputs.
+     */
+	public String[] getInputs() {
+		return inputs;
+	}
+	
+	/**
+     * Returns the transporter outputs as an array of {@link String}.
+     *
+     * @return The transporter outputs.
+     */
+	public String[] getOutputs() {
+		return outputs;
+	}
+	
+	/** Changes the transporter name.
+    *
+    * @param name A {@link String} as the transporter name.
+    * @throws NullPointerException If a {@code null} name is received.
+    */
+	public void setName(final String name) throws NullPointerException {
+		this.name = requireNonNull(name);
+	}
+	
+	/** Changes the transporter cell.
+    *
+    * @param cell A {@link String} as the transporter cell.
+    * @throws NullPointerException If a {@code null} cell is received.
+    */
+	public void setCell(final String cell) throws NullPointerException {
+		this.cell = requireNonNull(cell);
+	}
+
+	/**
+    * Changes the transporter diffusion rate.
+    *
+    * @param diffusionRate A {@link Double} as the transporter diffusion rate.
+    * @throws NullPointerException If a {@code null} diffusionRate is received.
+    */
+	public void setDiffusionRate(final double diffusionRate) throws NullPointerException {
+		this.diffusionRate = requireNonNull(diffusionRate);
+	}
+
+	/**
+    * Changes the transporter radius.
+    *
+    * @param radius A {@link Double} as the transporter radius.
+    * @throws NullPointerException If a {@code null} radius is received.
+    */
+	public void setRadius(final double radius) throws NullPointerException {
+		this.radius = requireNonNull(radius);
+	}
+
+	/**
+    * Changes the transporter color.
+    *
+    * @param color A {@link String} as the transporter color.
+    * @throws NullPointerException If a {@code null} color is received.
+    */
+	public void setColor(final String color) throws NullPointerException {
+		this.color = requireNonNull(color);
+	}
+
+	/**
+    * Changes the transporter entrance membrane.
+    *
+    * @param entranceMembrane A {@link SubcellularLocation} as the transporter entrance membrane.
+    * @throws NullPointerException If a {@code null} entranceMembrane is received.
+    * @see SubcellularLocation
+    */
+	public void setEntranceMembrane(final SubcellularLocation entranceMembrane) throws NullPointerException {
+		this.entranceMembrane = requireNonNull(entranceMembrane);
+	}
+
+	/**
+    * Changes the transporter exit membrane.
+    *
+    * @param exitMembrane A {@link SubcellularLocation} as the transporter exit membrane.
+    * @throws NullPointerException If a {@code null} exitMembrane is received.
+    * @see SubcellularLocation
+    */
+	public void setExitMembrane(final SubcellularLocation exitMembrane) throws NullPointerException {
+		this.exitMembrane = requireNonNull(exitMembrane);
+	}
+
+	/**
+    * Changes the transporter membrane to get molecules from.
+    *
+    * @param membraneToGetFrom A {@link SubcellularLocation} as the membrane to get molecules from.
+    * @throws NullPointerException If a {@code null} membraneToGetFrom is received.
+    * @see SubcellularLocation
+    */
+	public void setMembraneToGetFrom(final SubcellularLocation membraneToGetFrom) throws NullPointerException {
+		this.membraneToGetFrom = requireNonNull(membraneToGetFrom);
+	}
+
+	/**
+    * Changes the transporter membrane to put molecules.
+    *
+    * @param membraneToPutTo A {@link SubcellularLocation} as the transporter membrane to put molecules.
+    * @throws NullPointerException If a {@code null} membraneToPutTo is received.
+    * @see SubcellularLocation
+    */
+	public void setMembraneToPutTo(final SubcellularLocation membraneToPutTo) throws NullPointerException {
+		this.membraneToPutTo = requireNonNull(membraneToPutTo);
+	}
+
+	/**
+    * Changes the transporter type.
+    *
+    * @param type The {@link TransporterType}.
+    * @throws NullPointerException If a {@code null} type is received.
+    */
+	public void setType(final TransporterType type) throws NullPointerException {
+		this.type = requireNonNull(type);
+	}
+
+	/**
+    * Changes the transporter inputs.
+    *
+    * @param inputs An array of {@link String} as the transporter inputs.
+    * @throws NullPointerException If a {@code null} inputs is received.
+    */
+	public void setInputs(final String[] inputs) throws NullPointerException {
+		this.inputs = requireNonNull(inputs);
+	}
+
+	/**
+    * Changes the transporter outputs.
+    *
+    * @param outputs An array of {@link String} as the transporter outputs.
+    * @throws NullPointerException If a {@code null} outputs is received.
+    */
+	public void setOutputs(final String[] outputs) throws NullPointerException {
+		this.outputs = requireNonNull(outputs);
+	}
+}

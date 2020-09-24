@@ -1,0 +1,106 @@
+package $1$.agents;
+
+import java.util.Optional;
+
+import $1$.cells.Cell;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain Agent} represents a simulated agent.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ */
+public class Agent {
+	final private double  			              molecularWeight;
+	final private double  			              radius;
+	final private String 			              color;
+	final private SubcellularLocation             maxMembraneToInner;
+	final private SubcellularLocation             maxMembraneToOuter;
+	final private Optional<Class<? extends Cell>> cellOfCreation;
+	final private SubcellularLocation             membraneOfCreation;
+
+	protected Agent(final double 		                  molecularWeight, 
+					final double  			              radius,
+					final String  			              color, 
+					final SubcellularLocation             maxMembraneToInner,
+					final SubcellularLocation             maxMembraneToOuter,
+					final Optional<Class<? extends Cell>> cellOfCreation,
+					final SubcellularLocation             membraneOfCreation){
+		this.molecularWeight    = molecularWeight;
+		this.radius 		    = radius;
+		this.color 			    = color;
+		this.maxMembraneToInner = maxMembraneToInner;
+		this.maxMembraneToOuter = maxMembraneToOuter;
+		this.cellOfCreation     = cellOfCreation;
+		this.membraneOfCreation = membraneOfCreation;
+	}
+
+	/**
+     * Returns the molecular weight as a {@link Double}.
+     *
+     * @return The molecular weight.
+     */
+	public double getMolecularWeight() {
+		return molecularWeight;
+	}
+
+	/**
+     * Returns the agent radius as a {@link Double}.
+     *
+     * @return The agent radius.
+     */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+     * Returns the agent color as a {@link String}.
+     *
+     * @return The agent color.
+     */
+	public String getColor() {
+		return color;
+	}
+	
+	/**
+     * Returns the agent maximum membrane to inner as a {@link SubcellularLocation}.
+     *
+     * @return The agent maximum membrane to inner.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMaxMembraneToInner() {
+		return maxMembraneToInner;
+	}
+
+	/**
+     * Returns the agent maximum membrane to outer as a {@link SubcellularLocation}.
+     *
+     * @return The agent maximum membrane to outer.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMaxMembraneToOuter() {
+		return maxMembraneToOuter;
+	}
+
+	/**
+     * Returns the agent cell of creation as a {@link Optional} of {@link Cell} class.
+     *
+     * @return The agent cell of creation. If returns Optional.empty() it means Extracellular location.
+     * @see Cell
+     * @see Optional
+     */
+	public Optional<Class<? extends Cell>> getCellOfCreation() {
+		return cellOfCreation;
+	}
+
+	/**
+     * Returns the agent membrane of creation as a {@link SubcellularLocation}.
+     *
+     * @return The agent membrane of creation.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMembraneOfCreation() {
+		return membraneOfCreation;
+	}
+}

@@ -1,0 +1,123 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.Optional;
+
+import $1$.agents.molecules.Molecule;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain OnRebound} represents the on rebound trigger of a simulated {@link Event}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Event
+ * @see EventTrigger
+ */
+public class OnRebound {
+
+	final private Optional<SubcellularLocation>       withMembrane;
+	final private Optional<Class<? extends Molecule>> withMolecule;
+	
+	private OnRebound(final Optional<SubcellularLocation>       withMembrane,
+			          final Optional<Class<? extends Molecule>> withMolecule){
+		this.withMembrane = withMembrane;
+		this.withMolecule = withMolecule;
+	}
+	
+	@Deprecated
+	public static OnRebound with(final SubcellularLocation       withMembrane,
+								 final Class<? extends Molecule> withMolecule) throws NullPointerException{
+		return new OnRebound(Optional.of(requireNonNull(withMembrane)), Optional.of(requireNonNull(withMolecule)));
+	}
+	
+	/**
+     * Constructs and returns an new instance of an activated {@link OnRebound} trigger with a {@link SubcellularLocation}
+     * of a membrane.
+     * 
+     * @param with The {@link SubcellularLocation} of the membrane that triggers the event. It cannot be null.
+     * @return A new instance of an activated OnRebound trigger with a membrane.
+     * @throws NullPointerException If the given arguments is {@code null}.
+     * @see Event
+     * @see EventTrigger
+     * @see SubcellularLocation
+     */
+	public static OnRebound withMembrane(final SubcellularLocation with) throws NullPointerException{
+		return new OnRebound(Optional.of(requireNonNull(with)), Optional.empty());
+	}
+	
+	/**
+     * Constructs and returns an new instance of an activated {@link OnRebound} trigger with a {@link Molecule}.
+     * 
+     * @param with The {@link Molecule} class that triggers the event. It cannot be null.
+     * @return A new instance of an activated OnRebound trigger with a molecule.
+     * @throws NullPointerException If the given arguments is {@code null}.
+     * @see Event
+     * @see EventTrigger
+     * @see Molecule
+     */
+	public static OnRebound withMolecule(final Class<? extends Molecule> with) throws NullPointerException{
+		return new OnRebound(Optional.empty(),Optional.of(requireNonNull(with)));
+	}
+	
+	/**
+     * Constructs and returns an new instance of an deactivated {@link OnRebound} trigger.
+     * 
+     * @return A new instance of an deactivated OnRebound trigger.
+     * @see Event
+     * @see EventTrigger
+     */
+	public static OnRebound withNone() {
+		return new OnRebound(Optional.empty(), Optional.empty());
+	}
+	
+	/**
+     * Returns the on rebound {@link SubcellularLocation} of the membrane that triggers the event as an {@link Optional}.
+     *
+     * @return The on rebound subcellular location of the membrane that triggers the event.
+     * @see SubcellularLocation
+     * @see Optional
+     */
+	public Optional<SubcellularLocation> getWithMembrane() {
+		return this.withMembrane;
+	}
+	
+	/**
+     * Returns the on rebound {@link Molecule} class that triggers the event as an {@link Optional}.
+     *
+     * @return The on rebound molecule that triggers the event.
+     * @see Molecule
+     * @see Optional
+     */	
+	public Optional<Class<? extends Molecule>> getWithMolecule() {
+		return this.withMolecule;
+	}
+	
+	/**
+	 * Returns if the {@link OnRebound} trigger is activated with a membrane.
+	 * 
+	 * @return {@code true} if the trigger is activated with a membrane, {@code false} otherwise
+	 */
+	public boolean isOnReboundWithMembrane() {
+		return withMembrane.isPresent();
+	}
+	
+	/**
+	 * Returns if the {@link OnRebound} trigger is activated with a {@link Molecule}.
+	 * 
+	 * @return {@code true} if the trigger is activated with a molecule, {@code false} otherwise
+	 */
+	public boolean isOnReboundWithMolecule() {
+		return withMolecule.isPresent();
+	}
+	
+	/**
+	 * Returns if the {@link OnRebound} trigger is activated.
+	 * 
+	 * @return {@code true} if the trigger is activated, {@code false} otherwise
+	 */
+	public boolean isOnRebound() {
+		return withMembrane.isPresent() || withMolecule.isPresent();
+	}
+}

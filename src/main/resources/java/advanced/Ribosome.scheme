@@ -1,0 +1,31 @@
+package $12$.agents.ribosomes;
+
+import java.util.Optional;
+
+import $12$.cells.*;
+import $12$.common.SubcellularLocation;
+
+/**
+ * {@linkplain $1$} represents a $1$ {@link Ribosome}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Ribosome
+ */
+public class $1$ extends Ribosome{
+
+	public $1$() {
+		super($3$, $4$, "$5$", SubcellularLocation.$6$,
+			  SubcellularLocation.$7$, $8$, 
+			  SubcellularLocation.$9$, $10$, "$11$");
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link $1$}.
+     * 
+     * @return A new instance of $1$.
+     */
+	public static $1$ $2$(){
+		return new $1$();
+	}	
+}

@@ -1,0 +1,54 @@
+package $1$.agents.ribosomes;
+
+import java.util.Optional;
+
+import $1$.agents.Agent;
+import $1$.cells.Cell;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain Ribosome} represents a simulated ribosome.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ * @see Agent
+ */
+public abstract class Ribosome extends Agent{
+
+	final private double  diffusionRate;
+	final private String  mRNA;
+
+	protected Ribosome(final double 		                 molecularWeight, 
+					   final double  			             radius,
+					   final String  			             color, 
+					   final SubcellularLocation             maxMembraneToInner,
+					   final SubcellularLocation             maxMembraneToOuter,
+					   final Optional<Class<? extends Cell>> cellOfCreation,
+					   final SubcellularLocation             membraneOfCreation,
+				       final double                          diffusionRate,
+				       final String                          mRNA) {				       
+		super(molecularWeight, radius, color, maxMembraneToInner, maxMembraneToOuter, 
+		      cellOfCreation, membraneOfCreation);
+
+		this.diffusionRate = diffusionRate;
+		this.mRNA		   = mRNA;
+	}
+	
+	/**
+     * Returns the diffusion rate of the ribosome as {@link Double}.
+     *
+     * @return The diffusion rate of the ribosome.
+     */
+	public double getDiffusionRate() {
+		return diffusionRate;
+	}
+	
+	/**
+     * Returns the mRNA of the ribosome as {@link String}.
+     *
+     * @return The mRNA of the ribosome.
+     */
+	public String getmRNA() {
+		return mRNA;
+	}
+}

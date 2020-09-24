@@ -1,0 +1,199 @@
+package $1$.feeders;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.Optional;
+
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain Feeder} represents a simulated feeder.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class Feeder {
+
+	private String              createMolecule;
+	private FeederType			type;
+	private Integer             creationSteps;
+	private Integer             productionNumber;
+	private SubcellularLocation feedLocation;
+	private Optional<Integer>   maxConcentration;
+
+	private Feeder(final String              createMolecule,
+				   final FeederType          type,
+				   final Integer             creationSteps, 
+				   final Integer             productionNumber,
+				   final SubcellularLocation feedLocation,
+				   final Optional<Integer>   maxConcentration){
+		this.createMolecule    = createMolecule;
+		this.type              = type;
+		this.creationSteps     = creationSteps;
+		this.productionNumber  = productionNumber;
+		this.feedLocation      = feedLocation;
+		this.maxConcentration  = maxConcentration;
+	}
+
+    /**
+     * Constructs and returns a new instance of a continuous {@link Feeder}.
+     * 
+     * @param createMolecule A {@link String} with the molecule to feed. It cannot be null.
+     * @param creationSteps A {@link Integer} with the creation steps. It cannot be null.
+     * @param productionNumber A {@link Integer} with the production number. It cannot be null.
+     * @param feedLocation A {@link SubcellularLocation} with the location to feed.
+     * 		It cannot be null.
+     * @return A new instance of continuous Feeder.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see SubcellularLocation
+     * @see FeederType
+     */
+	public static Feeder continuousFeeder(final String 				createMolecule,
+										  final Integer             creationSteps, 
+										  final Integer             productionNumber,
+										  final SubcellularLocation feedLocation) throws NullPointerException {
+		return new Feeder(requireNonNull(createMolecule), FeederType.CONTINUOUS, requireNonNull(creationSteps), 
+				          requireNonNull(productionNumber), requireNonNull(feedLocation), Optional.empty());
+	}
+
+    /**
+     * Constructs and returns a new instance of a non continuous {@link Feeder}.
+     * 
+     * @param createMolecule A {@link String} with the molecule to feed. It cannot be null.
+     * @param creationSteps A {@link Integer} with the creation steps. It cannot be null.
+     * @param productionNumber A {@link Integer} with the production number. It cannot be null.
+     * @param feedLocation A {@link SubcellularLocation} with the location to feed.
+     * 		It cannot be null.
+     * @param maxConcentration A {@link Integer} with the maximum concentration of the molecule 
+     * 		to feed. It cannot be null.
+     * @return A new instance of non continuous Feeder.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see SubcellularLocation
+     * @see FeederType
+     */
+	public static Feeder nonContinuousFeeder(final String              createMolecule,
+										     final Integer             creationSteps, 
+										     final Integer             productionNumber,
+										     final SubcellularLocation feedLocation,
+										     final Integer             maxConcentration) throws NullPointerException {
+		return new Feeder(requireNonNull(createMolecule), FeederType.NON_CONTINUOUS, requireNonNull(creationSteps), 
+						  requireNonNull(productionNumber), requireNonNull(feedLocation),
+						  Optional.of(requireNonNull(maxConcentration)));
+	}
+
+	/**
+     * Returns the molecule to feed as a {@link String}.
+     *
+     * @return The molecule to feed.
+     */
+	public String getCreateMolecule() {
+		return createMolecule;
+	}
+
+	/** Changes the molecule to feed.
+    *
+    * @param createMolecule A {@link String} as the molecule to feed.
+    * @throws NullPointerException If a {@code null} createMolecule is received.
+    */
+	public void setCreateMolecule(final String createMolecule) throws NullPointerException {
+		this.createMolecule = requireNonNull(createMolecule);
+	}
+
+	/**
+     * Returns the {@link FeederType}.
+     *
+     * @return The feederType.
+     * @see FeederType
+     */
+	public FeederType getType() {
+		return type;
+	}
+
+	/** Changes the {@link FeederType}.
+    *
+    * @param type The {@link FeederType}.
+    * @throws NullPointerException If a {@code null} type is received.
+    * @see FeederType
+    */
+	public void setType(final FeederType type) throws NullPointerException {
+		this.type = requireNonNull(type);
+	}
+
+	/**
+     * Returns the creation steps as a {@link Integer}.
+     *
+     * @return The creation steps.
+     */
+	public Integer getCreationSteps() {
+		return creationSteps;
+	}
+
+	/** Changes the creation steps.
+    *
+    * @param creationSteps A {@link Integer} as the creation steps.
+    * @throws NullPointerException If a {@code null} creationSteps is received.
+    */
+	public void setCreationSteps(final Integer creationSteps) throws NullPointerException {
+		this.creationSteps = requireNonNull(creationSteps);
+	}
+	
+	/**
+     * Returns the production number as a {@link Integer}.
+     *
+     * @return The production number.
+     */
+	public Integer getProductionNumber() {
+		return productionNumber;
+	}
+
+	/** Changes the production number.
+    *
+    * @param productionNumber A {@link Integer} as the production number.
+    * @throws NullPointerException If a {@code null} productionNumber is received.
+    */
+	public void setProductionNumber(final Integer productionNumber) throws NullPointerException {
+		this.productionNumber = requireNonNull(productionNumber);
+	}
+	
+	/**
+     * Returns the feed location as a {@link SubcellularLocation}.
+     *
+     * @return The feed location.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getFeedLocation() {
+		return feedLocation;
+	}
+
+	/** Changes the feed location.
+    *
+    * @param feedLocation A {@link SubcellularLocation} as the feed location.
+    * @throws NullPointerException If a {@code null} feedLocation is received.
+     * @see SubcellularLocation
+    */
+	public void setFeedLocation(final SubcellularLocation feedLocation) throws NullPointerException {
+		this.feedLocation = requireNonNull(feedLocation);
+	}
+	
+	/**
+     * Returns the maximum concentration of the molecules to feed as an
+     * {@link Optional} of {@link Integer}.
+     *
+     * @return The maximum concentration of the molecules to feed.
+     */
+	public Optional<Integer> getMaxConcentration() {
+		return maxConcentration;
+	}
+
+	/** Changes the maximum concentration of the molecules to feed.
+    *
+    * @param maxConcentration A {@link Optional} of {@link Integer} as maximum concentration
+    * 		of the molecules to feed.
+    * @throws NullPointerException If a {@code null} maxConcentration is received.
+    * @see SubcellularLocation
+    */
+	public void setMaxConcentration(Optional<Integer> maxConcentration) {
+		this.maxConcentration = requireNonNull(maxConcentration);
+	}
+}
+

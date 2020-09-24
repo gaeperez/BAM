@@ -1,0 +1,87 @@
+package $1$.cells;
+
+import static java.util.Objects.requireNonNull;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain CellMembrane} represents a membrane of a simulated cell.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Cell
+ */
+public class CellMembrane {
+
+	final private SubcellularLocation subcellularLocation;
+	final private double 			  radius;
+	final private double 			  height;
+	final private String 			  color;
+
+	private CellMembrane(final SubcellularLocation subcellularLocation,
+						 final double              radius, 
+						 final double              height, 
+						 final String              color) {
+		this.subcellularLocation = subcellularLocation;
+		this.radius 			 = radius;
+		this.height				 = height;
+		this.color 				 = color;
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link CellMembrane}.
+     * 
+     * @param subcellularLocation The {@link SubcellularLocation} of the membrane. It cannot be null.
+     * @param radius A {@link Double} with the radius of the membrane. It cannot be null.
+     * @param height A {@link Double} with the height of the membrane. It cannot be null.
+     * @param color A {@link String} with the color of the membrane. It cannot be null.
+     * @return A new instance of CellMembrane.
+     * @throws NullPointerException If any of the given arguments is
+     *         {@code null}.
+     * @see Cell
+     * @see SubcellularLocation
+     */
+	public static CellMembrane cellMembrane(final SubcellularLocation subcellularLocation,
+							  		        final double              radius, 
+							  		        final double              height, 
+							  		        final String              color) throws NullPointerException{
+		return new CellMembrane(requireNonNull(subcellularLocation), requireNonNull(radius), requireNonNull(height), 
+								requireNonNull(color));
+	}
+
+	/**
+     * Returns the {@link SubcellularLocation} of the membrane.
+     *
+     * @return The subcellular location of the membrane.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getSubcellularLocation() {
+		return subcellularLocation;
+	}
+
+	/**
+     * Returns the color of the membrane as {@link String}.
+     *
+     * @return The color of the membrane.
+     */
+	public String getColor() {
+		return color;
+	}
+
+	/**
+     * Returns the radius of the membrane as {@link Double}.
+     *
+     * @return The radius of the membrane.
+     */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+     * Returns the height of the membrane as {@link Double}.
+     *
+     * @return The height of the membrane.
+     */
+	public double getHeight() {
+		return height;
+	}
+}

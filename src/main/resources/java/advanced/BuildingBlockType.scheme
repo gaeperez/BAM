@@ -1,0 +1,33 @@
+package $1$.agents.molecules.buildingblocks;
+
+import $1$.feeders.Feeder;
+
+/**
+ * {@linkplain BuildingBlockType} represents the type of an {@link BuildingBlock}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Feeder
+ */
+public enum BuildingBlockType {
+	
+	AMINOACID("Aminoacid"),
+	FATTY_ACID("Fatty acid"),
+	NUCLEOTIDE("Nucleotide"),
+	MONOSACCHARIDE("Monosaccharide");
+
+	final private String type;
+    
+    private BuildingBlockType(final String type){
+    	this.type = type;
+    }
+    
+    /**
+     * Returns the type of the {@code BuildingBlock} as {@link String}.
+     *
+     * @return The type of the BuildingBlock.
+     */
+    public String getType(){
+    	return this.type;
+    }
+}

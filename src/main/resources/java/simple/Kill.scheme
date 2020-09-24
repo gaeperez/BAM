@@ -1,0 +1,54 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+
+/**
+ * {@linkplain Kill} represents a simulated kill {@link Event}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Event
+ */
+public class Kill extends Event{
+	private EventTrigger trigger;
+
+	private Kill(final String       target, 
+				 final EventTrigger trigger) {
+		super(target);
+		this.trigger = trigger;
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link Kill}.
+     * 
+     * @param target A {@link String} as the event target. It cannot be null.
+     * @param trigger The {@link EventTrigger}. It cannot be null.
+     * @return A new instance of Kill.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see EventTrigger
+     */
+	public static Kill kill(final String       target, 
+							final EventTrigger trigger) throws NullPointerException {
+		return new Kill(requireNonNull(target), requireNonNull(trigger));
+	}
+
+	/**
+     * Returns the {@link EventTrigger}.
+     *
+     * @return The event trigger.
+     * @see EventTrigger
+     */
+	public EventTrigger getTrigger() {
+		return trigger;
+	}
+	
+	/** Changes the event trigger.
+    *
+    * @param trigger The {@link EventTrigger}.
+    * @throws NullPointerException If a {@code null} trigger is received.
+    * @see EventTrigger
+    */
+	public void setTrigger(final EventTrigger trigger) throws NullPointerException {
+		this.trigger = requireNonNull(trigger);
+	}
+}

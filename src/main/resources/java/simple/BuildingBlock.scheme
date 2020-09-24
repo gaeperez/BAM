@@ -1,0 +1,96 @@
+package $1$.agents.molecules.buildingblocks;
+
+import static java.util.Objects.requireNonNull;
+import $1$.common.SubcellularLocation;
+import $1$.agents.Agent;
+import $1$.agents.molecules.Molecule;
+import $1$.common.DiffusionRate;
+
+/**
+ * {@linkplain BuildingBlock} represents a simulated buiding block.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ * @see Molecule
+ * @see Agent
+ */
+public class BuildingBlock extends Molecule{
+	
+	private BuildingBlockType type;
+
+	private BuildingBlock(final String              name,
+						  final double 		        molecularWeight, 
+						  final double  			radius,
+						  final String  			color, 
+						  final SubcellularLocation maxMembraneToInner,
+						  final SubcellularLocation maxMembraneToOuter,
+						  final String              cellOfCreation,
+						  final SubcellularLocation membraneOfCreation,
+						  final DiffusionRate       diffusionRate,
+						  final BuildingBlockType   type) {
+		super(name, molecularWeight, radius, color, maxMembraneToInner, maxMembraneToOuter, 
+			      cellOfCreation, membraneOfCreation, diffusionRate);		      
+		this.type          = type;
+	}
+
+    /**
+     * Constructs and returns a new instance of {@link BuildingBlock}.
+     * 
+     * @param name A {@link String} with the name of the building block. It cannot be null.
+     * @param molecularWeight A {@link Double} with the molecular weight. It cannot be null.
+     * @param radius A {@link Double} with the radius of the building block. It cannot be null.
+     * @param color A {@link String} with the color of the building block. It cannot be null.
+     * @param maxMembraneToInner A {@link SubcellularLocation} with the maximum membrane to inner. 
+     * 		It cannot be null.
+     * @param maxMembraneToOuter A {@link SubcellularLocation} with the maximum membrane to outer. 
+     * 		It cannot be null.
+     * @param cellOfCreation A {@link String} with the cell of creation of the building block. 
+     * 		It cannot be null.
+     * @param membraneOfCreation A {@link SubcellularLocation} with the membrane of creation of the 
+     * 		building block. It cannot be null.
+     * @param diffusionRate The {@link DiffusionRate} of the building block. It cannot be null.
+     * @param type The {@link BuildingBlockType}. It cannot be null.
+     * @return A new instance of BuildingBlock.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see Molecule
+     * @see SubcellularLocation
+     * @see DiffusionRate
+     * @see BuildingBlockType
+     */
+	public static BuildingBlock buildingBlock(final String              name,
+											  final double 		        molecularWeight, 
+											  final double  			radius,
+											  final String  			color, 
+											  final SubcellularLocation maxMembraneToInner,
+											  final SubcellularLocation maxMembraneToOuter,
+											  final String              cellOfCreation,
+											  final SubcellularLocation membraneOfCreation,
+											  final DiffusionRate       diffusionRate,
+											  final BuildingBlockType   type) throws NullPointerException {
+		return new BuildingBlock(requireNonNull(name), requireNonNull(molecularWeight), requireNonNull(radius),
+								 requireNonNull(color), requireNonNull(maxMembraneToInner), requireNonNull(maxMembraneToOuter), 
+								 requireNonNull(cellOfCreation), requireNonNull(membraneOfCreation), requireNonNull(diffusionRate), 
+								 requireNonNull(type));
+	}	
+
+	/**
+    * Returns the {@link BuildingBlockType}.
+    *
+    * @return The building block type.
+    * @see    BuildingBlockType
+    */
+	public BuildingBlockType getType() {
+		return type;
+	}
+
+	/**
+    * Changes the building block type.
+    *
+    * @param type The {@link BuildingBlockType}.
+    * @throws NullPointerException If a {@code null} type is received.
+    * @see BuildingBlockType
+    */
+	public void setType(final BuildingBlockType type) throws NullPointerException {
+		this.type = requireNonNull(type);
+	}
+}

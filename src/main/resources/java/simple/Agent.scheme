@@ -1,0 +1,198 @@
+package $1$.agents;
+
+import static java.util.Objects.requireNonNull;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain Agent} represents a simulated agent.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ */
+public abstract class Agent {
+	private String  			name;
+	private double  			molecularWeight;
+	private double  		    radius;
+	private String 			    color;
+	private SubcellularLocation maxMembraneToInner;
+	private SubcellularLocation maxMembraneToOuter;
+	private String              cellOfCreation;
+	private SubcellularLocation membraneOfCreation;
+
+	protected Agent(final String              name,
+					final double 		      molecularWeight, 
+					final double  			  radius,
+					final String  			  color, 
+					final SubcellularLocation maxMembraneToInner,
+					final SubcellularLocation maxMembraneToOuter,
+					final String              cellOfCreation,
+					final SubcellularLocation membraneOfCreation){
+		this.name               = name;
+		this.molecularWeight    = molecularWeight;
+		this.radius 		    = radius;
+		this.color 			    = color;
+		this.maxMembraneToInner = maxMembraneToInner;
+		this.maxMembraneToOuter = maxMembraneToOuter;
+		this.cellOfCreation     = cellOfCreation;
+		this.membraneOfCreation = membraneOfCreation;
+	}
+
+	/**
+     * Returns the agent name as a {@link String}.
+     *
+     * @return The agent name.
+     */
+	public String getName() {
+		return name;
+	}
+
+	/**
+     * Returns the molecular weight as a {@link Double}.
+     *
+     * @return The molecular weight.
+     */
+	public double getMolecularWeight() {
+		return molecularWeight;
+	}
+
+	/**
+     * Returns the agent radius as a {@link Double}.
+     *
+     * @return The agent radius.
+     */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+     * Returns the agent color as a {@link String}.
+     *
+     * @return The agent color.
+     */
+	public String getColor() {
+		return color;
+	}
+	
+	/**
+     * Returns the agent maximum membrane to inner as a {@link SubcellularLocation}.
+     *
+     * @return The agent maximum membrane to inner.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMaxMembraneToInner() {
+		return maxMembraneToInner;
+	}
+
+	/**
+     * Returns the agent maximum membrane to outer as a {@link SubcellularLocation}.
+     *
+     * @return The agent maximum membrane to outer.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMaxMembraneToOuter() {
+		return maxMembraneToOuter;
+	}
+
+	/**
+     * Returns the agent cell of creation as a {@link String}.
+     *
+     * @return The agent cell of creation.
+     */
+	public String getCellOfCreation() {
+		return cellOfCreation;
+	}
+
+	/**
+     * Returns the agent membrane of creation as a {@link SubcellularLocation}.
+     *
+     * @return The agent membrane of creation.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMembraneOfCreation() {
+		return membraneOfCreation;
+	}
+
+	/**
+    * Changes the agent name.
+    *
+    * @param name A {@link String} as the agent name.
+    * @throws NullPointerException If a {@code null} name is received.
+    */
+	public void setName(final String name) throws NullPointerException {
+		this.name = requireNonNull(name);
+	}
+
+	/**
+    * Changes the molecular weight.
+    *
+    * @param molecularWeight A {@link Double} as the molecular weight.
+    * @throws NullPointerException If a {@code null} molecularWeight is received.
+    */
+	public void setMolecularWeight(final double molecularWeight) throws NullPointerException {
+		this.molecularWeight = requireNonNull(molecularWeight);
+	}
+
+	/**
+    * Changes the agent radius.
+    *
+    * @param radius A {@link Double} as the agent radius.
+    * @throws NullPointerException If a {@code null} radius is received.
+    */
+	public void setRadius(final double radius) throws NullPointerException {
+		this.radius = requireNonNull(radius);
+	}
+
+	/**
+    * Changes the agent color.
+    *
+    * @param color A {@link String} as the agent color.
+    * @throws NullPointerException If a {@code null} color is received.
+    */
+	public void setColor(final String color) throws NullPointerException {
+		this.color = requireNonNull(color);
+	}
+
+	/**
+    * Changes the agent maximum membrane to inner.
+    *
+    * @param maxMembraneToInner A {@link SubcellularLocation} as the agent maximum membrane to inner.
+    * @throws NullPointerException If a {@code null} maxMembraneToInner is received.
+    * @see SubcellularLocation
+    */
+	public void setMaxMembraneToInner(final SubcellularLocation maxMembraneToInner) throws NullPointerException {
+		this.maxMembraneToInner = requireNonNull(maxMembraneToInner);
+	}
+
+	/**
+    * Changes the agent maximum membrane to outer.
+    *
+    * @param maxMembraneToOuter A {@link SubcellularLocation} as the agent maximum membrane to outer.
+    * @throws NullPointerException If a {@code null} maxMembraneToOuter is received.
+    * @see SubcellularLocation
+    */
+	public void setMaxMembraneToOuter(final SubcellularLocation maxMembraneToOuter) throws NullPointerException {
+		this.maxMembraneToOuter = requireNonNull(maxMembraneToOuter);
+	}
+
+	/**
+    * Changes the agent cell of creation.
+    *
+    * @param cellOfCreation A {@link String} as the agent cell of creation.
+    * @throws NullPointerException If a {@code null} cellOfCreation is received.
+    */
+	public void setCellOfCreation(final String cellOfCreation) throws NullPointerException {
+		this.cellOfCreation = requireNonNull(cellOfCreation);
+	}
+
+	/**
+    * Changes the agent membrane of creation.
+    *
+    * @param membraneOfCreation A {@link SubcellularLocation} as the agent membrane of creation.
+    * @throws NullPointerException If a {@code null} membraneOfCreation is received.
+    * @see SubcellularLocation
+    */
+	public void setMembraneOfCreation(final SubcellularLocation membraneOfCreation) throws NullPointerException {
+		this.membraneOfCreation = requireNonNull(membraneOfCreation);
+	}
+}
+

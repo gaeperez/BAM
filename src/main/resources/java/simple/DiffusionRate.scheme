@@ -1,0 +1,195 @@
+package $1$.common;
+
+import static java.util.Objects.requireNonNull;
+
+/**
+ * {@linkplain DiffusionRate} represents a diffusion rate.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class DiffusionRate {
+
+	private double extracellular;
+	private double outerMembrane;
+	private double outerPeriplasm;
+	private double peptidoglycan;
+	private double innerPeriplasm;
+	private double innerMembrane;
+	private double cytoplasm;
+	
+	private DiffusionRate(final double extracellular,
+						  final double outerMembrane,
+						  final double outerPeriplasm,
+						  final double peptidoglycan,
+						  final double innerPeriplasm,
+						  final double innerMembrane,
+						  final double cytoplasm) {
+		this.extracellular  = extracellular;
+		this.outerMembrane  = outerMembrane;
+		this.outerPeriplasm = outerPeriplasm;
+		this.peptidoglycan  = peptidoglycan;
+		this.innerPeriplasm = innerPeriplasm;
+		this.innerMembrane  = innerMembrane;
+		this.cytoplasm      = cytoplasm;
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link DiffusionRate}.
+     * 
+     * @param extracellular A {@link Double} with the diffusion rate of the extracellular location. It cannot be null.
+     * @param outerMembrane A {@link Double} with the diffusion rate of the outer membrane. It cannot be null.
+     * @param outerPeriplasm A {@link Double} with the diffusion rate of the outer periplasm. It cannot be null.
+     * @param peptidoglycan A {@link Double} with the diffusion rate of the peptidoglycan. It cannot be null.
+     * @param innerPeriplasm A {@link Double} with the diffusion rate of the inner periplasm. It cannot be null.
+     * @param innerMembrane A {@link Double} with the diffusion rate of the inner membrane. It cannot be null.
+     * @param cytoplasm A {@link Double} with the diffusion rate of the cytoplasm. It cannot be null.
+     * @return A new instance of DiffusionRate.
+     * @throws NullPointerException If any of the given arguments is
+     *         {@code null}.
+     */
+	public static DiffusionRate diffusionRate(final double extracellular,
+											  final double outerMembrane,
+											  final double outerPeriplasm,
+											  final double peptidoglycan,
+											  final double innerPeriplasm,
+											  final double innerMembrane,
+											  final double cytoplasm) throws NullPointerException{
+		return new DiffusionRate(extracellular, outerMembrane, outerPeriplasm,
+							     peptidoglycan, innerPeriplasm, innerMembrane,
+							     cytoplasm);
+	}
+
+	/**
+     * Returns the diffusion rate of the extracellular location as {@link Double}.
+     *
+     * @return The diffusion rate of the extracellular location.
+     */
+	public double getExtracellular() {
+		return extracellular;
+	}
+
+	/**
+     * Returns the diffusion rate of the outer membrane as {@link Double}.
+     *
+     * @return The diffusion rate of the outer membrane.
+     */
+	public double getOuterMembrane() {
+		return outerMembrane;
+	}
+
+	/**
+     * Returns the diffusion rate of the outer periplasm as {@link Double}.
+     *
+     * @return The diffusion rate of the outer periplasm.
+     */
+	public double getOuterPeriplasm() {
+		return outerPeriplasm;
+	}
+
+	/**
+     * Returns the diffusion rate of the peptidoglycan as {@link Double}.
+     *
+     * @return The diffusion rate of the peptidoglycan.
+     */
+	public double getPeptidoglycan() {
+		return peptidoglycan;
+	}
+
+	/**
+     * Returns the diffusion rate of the inner periplasm as {@link Double}.
+     *
+     * @return The diffusion rate of the inner periplasm.
+     */
+	public double getInnerPeriplasm() {
+		return innerPeriplasm;
+	}
+
+	/**
+     * Returns the diffusion rate of the inner membrane as {@link Double}.
+     *
+     * @return The diffusion rate of the inner membrane.
+     */
+	public double getInnerMembrane() {
+		return innerMembrane;
+	}
+
+	/**
+     * Returns the diffusion rate of the cytoplasm as {@link Double}.
+     *
+     * @return The diffusion rate of the cytoplasm.
+     */
+	public double getCytoplasm() {
+		return cytoplasm;
+	}
+
+	/**
+    * Changes the diffusion rate of the extracellular location.
+    *
+    * @param extracellular {@link Double} with the diffusion rate of the extracellular location. It cannot be null.
+    * @throws NullPointerException If a {@code null} extracellular diffusion rate is received.
+    */
+	public void setExtracellular(final double extracellular) throws NullPointerException {
+		this.extracellular = requireNonNull(extracellular);
+	}
+
+	/**
+    * Changes the diffusion rate of the outer membrane.
+    *
+    * @param outerMembrane {@link Double} with the diffusion rate of the outer membrane. It cannot be null.
+    * @throws NullPointerException If a {@code null} outer membrane diffusion rate is received.
+    */
+	public void setOuterMembrane(final double outerMembrane) throws NullPointerException {
+		this.outerMembrane = requireNonNull(outerMembrane);
+	}
+
+	/**
+    * Changes the diffusion rate of the outer periplasm.
+    *
+    * @param outerPeriplasm {@link Double} with the diffusion rate of the outer periplasm. It cannot be null.
+    * @throws NullPointerException If a {@code null} outer periplasm diffusion rate is received.
+    */
+	public void setOuterPeriplasm(final double outerPeriplasm) throws NullPointerException {
+		this.outerPeriplasm = requireNonNull(outerPeriplasm);
+	}
+
+	/**
+    * Changes the diffusion rate of the peptidoglycan.
+    *
+    * @param peptidoglycan {@link Double} with the diffusion rate of the peptidoglycan. It cannot be null.
+    * @throws NullPointerException If a {@code null} peptidoglycan diffusion rate is received.
+    */
+	public void setPeptidoglycan(final double peptidoglycan) throws NullPointerException {
+		this.peptidoglycan = requireNonNull(peptidoglycan);
+	}
+
+	/**
+    * Changes the diffusion rate of the inner periplasm.
+    *
+    * @param innerPeriplasm {@link Double} with the diffusion rate of the inner periplasm. It cannot be null.
+    * @throws NullPointerException If a {@code null} inner periplasm diffusion rate is received.
+    */
+	public void setInnerPeriplasm(final double innerPeriplasm) throws NullPointerException {
+		this.innerPeriplasm = requireNonNull(innerPeriplasm);
+	}
+
+	/**
+    * Changes the diffusion rate of the inner membrane.
+    *
+    * @param innerMembrane {@link Double} with the diffusion rate of the inner membrane. It cannot be null.
+    * @throws NullPointerException If a {@code null} inner membrane diffusion rate is received.
+    */
+	public void setInnerMembrane(final double innerMembrane) throws NullPointerException {
+		this.innerMembrane = requireNonNull(innerMembrane);
+	}
+
+	/**
+    * Changes the diffusion rate of the cytoplasm.
+    *
+    * @param cytoplasm {@link Double} with the diffusion rate of the cytoplasm. It cannot be null.
+    * @throws NullPointerException If a {@code null} cytoplasm diffusion rate is received.
+    */
+	public void setCytoplasm(final double cytoplasm) throws NullPointerException {
+		this.cytoplasm = requireNonNull(cytoplasm);
+	}
+}

@@ -1,0 +1,29 @@
+package $1$.transporters;
+
+/**
+ * {@linkplain TransporterType} represents the type of an {@link Transporter}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Transporter
+ */
+public enum TransporterType {
+	UNIPORTER("uniporter"),
+	SYMPORTER("symporter"),
+	ANTIPORTER("antiporter");
+	
+	final private String type;
+	
+	private TransporterType(final String type){
+		this.type = type;
+	}
+
+    /**
+     * Returns the type of the {@code Transporter} as {@link String}.
+     *
+     * @return The type of the transporter.
+     */
+	public String getType(){
+		return this.type;
+	}
+}

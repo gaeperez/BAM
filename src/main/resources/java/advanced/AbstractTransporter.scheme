@@ -1,0 +1,151 @@
+package $1$.transporters;
+
+import $1$.agents.molecules.Molecule;
+import $1$.cells.Cell;
+import $1$.common.SubcellularLocation;
+
+public abstract class Transporter {
+
+	final private Class<? extends Cell>       cell;
+	final private double                      radius;
+	final private double                      diffusionRate;
+	final private String                      color;
+	final private SubcellularLocation 		  entranceMembrane;
+	final private SubcellularLocation 		  exitMembrane;
+	final private SubcellularLocation 		  membraneToGetFrom;
+	final private SubcellularLocation 		  membraneToPutTo;
+	final private TransporterType             type;
+	final private Class<? extends Molecule>[] inputs;
+	final private Class<? extends Molecule>[] outputs;
+
+	protected Transporter(final Class<? extends Cell>       cell, 
+						  final double                      radius,
+						  final double                      diffusionRate, 
+					      final String                      color, 
+						  final SubcellularLocation         entranceMembrane,
+						  final SubcellularLocation         exitMembrane,
+					      final SubcellularLocation         membraneToGetFrom,
+						  final SubcellularLocation         membraneToPutTo,
+						  final TransporterType             type, 
+						  final Class<? extends Molecule>[] inputs,
+						  final Class<? extends Molecule>[] outputs) {
+		this.cell              = cell;
+		this.radius 	       = radius;
+		this.diffusionRate     = diffusionRate;
+		this.color             = color;
+		this.entranceMembrane  = entranceMembrane;
+		this.exitMembrane      = exitMembrane;
+		this.membraneToGetFrom = membraneToGetFrom;
+		this.membraneToPutTo   = membraneToPutTo;
+		this.type 		       = type;
+		this.inputs 	       = inputs;
+		this.outputs 	       = outputs;
+	}
+	
+	/**
+     * Returns the transporter radius as a {@link Double}.
+     *
+     * @return The transporter radius.
+     */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+     * Returns the transporter cell as a {@link Cell} class.
+     *
+     * @return The transporter cell.
+     * @see Cell
+     */
+	public Class<? extends Cell> getCell() {
+		return cell;
+	}
+
+	/**
+     * Returns the transporter color as a {@link String}.
+     *
+     * @return The transporter color.
+     */
+	public String getColor() {
+		return color;
+	}
+
+	/**
+     * Returns the transporter diffusion rate as a {@link Double}.
+     *
+     * @return The transporter diffusion rate.
+     */
+	public double getDiffusionRate() {
+		return diffusionRate;
+	}
+
+	/**
+     * Returns the entrance membrane as a {@link SubcellularLocation}.
+     *
+     * @return The entrance membrane.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getEntranceMembrane() {
+		return entranceMembrane;
+	}
+
+	/**
+     * Returns the exit membrane as a {@link SubcellularLocation}.
+     *
+     * @return The exit membrane.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getExitMembrane() {
+		return exitMembrane;
+	}
+
+	/**
+     * Returns the membrane to get molecules from as a {@link SubcellularLocation}.
+     *
+     * @return The membrane to get molecules from.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMembraneToGetFrom() {
+		return membraneToGetFrom;
+	}
+
+	/**
+     * Returns the membrane to put molecules as a {@link SubcellularLocation}.
+     *
+     * @return The membrane to put molecules.
+     * @see SubcellularLocation
+     */
+	public SubcellularLocation getMembraneToPutTo() {
+		return membraneToPutTo;
+	}
+	
+	/**
+     * Returns the {@link TransporterType}.
+     *
+     * @return The transporter type.
+     * @see TransporterType
+     */
+	public TransporterType getType() {
+		return type;
+	}
+	
+	/**
+     * Returns the transporter inputs as an array of {@link Molecule} classes.
+     *
+     * @return The transporter inputs.
+     * @see Molecule
+     */
+	public Class<? extends Molecule>[] getInputs() {
+		return inputs;
+	}
+	
+	/**
+     * Returns the transporter outputs as an array of {@link Molecule} classes.
+     *
+     * @return The transporter outputs.
+     * @see Molecule
+     */
+	public Class<? extends Molecule>[] getOutputs() {
+		return outputs;
+	}
+}

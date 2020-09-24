@@ -1,0 +1,27 @@
+package $1$.containers;
+
+import java.util.List;
+
+/**
+ * {@linkplain SimpleContainer} represents a simple container.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public abstract class SimpleContainer<T>{
+	private final List<T> list;
+	
+	protected SimpleContainer(final List<T> list) {
+			this.list = list;
+	}
+	
+	/**
+     * Returns the {@link List} of all elements.
+     *
+     * @return The list of all elements.
+     * @see    List
+     */
+	public List<T> getList(){
+		return list;
+	}
+}

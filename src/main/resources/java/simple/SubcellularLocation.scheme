@@ -1,0 +1,34 @@
+package $1$.common;
+
+/**
+ * {@linkplain SubcellularLocation} represents a subcellular location.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public enum SubcellularLocation {
+
+	EXTRACELLULAR("extracellular"),
+	OUTER_MEMBRANE("outer membrane"),
+	OUTER_PERIPLASM("outer periplasm"),
+	PEPTIDOGLYCAN("peptidoglycan"),
+	INNER_PERIPLASM("inner periplasm"),
+	INNER_MEMBRANE("inner membrane"),
+	CYTOPLASM("cytoplasm");
+
+	final private String location;
+    
+    private SubcellularLocation(final String location){
+    	this.location = location;
+    }
+
+    /**
+     * Returns the {@code SubcellularLocation} as {@link String}.
+     *
+     * @return The subcellular location.
+     */
+    public String getLocation(){
+    	return this.location;
+    }
+}
+

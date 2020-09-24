@@ -1,0 +1,58 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+
+/**
+ * {@linkplain EventTrigger} represents a trigger of an {@link Event}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Event
+ */
+public class EventTrigger {
+	final private OnInner   onInner;
+	final private OnRebound onRebound;
+	
+	private EventTrigger(final OnInner onInner, 
+						 final OnRebound onRebound) {
+		this.onInner   = onInner;
+		this.onRebound = onRebound;
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link EventTrigger}.
+     * 
+     * @param onInner The {@link OnInner} trigger of the event. It cannot be null.
+     * @param onRebound The {@link OnRebound} trigger of the event. It cannot be null.
+     * @return A new instance of EventTrigger.
+     * @throws NullPointerException If any of the given arguments is
+     *         {@code null}.
+     * @see Event
+     * @see OnInner
+     * @see OnRebound
+     */
+	public static EventTrigger eventTrigger(final OnInner onInner, 
+											final OnRebound onRebound) throws NullPointerException {
+		return new EventTrigger(requireNonNull(onInner), requireNonNull(onRebound));
+	}
+	
+	/**
+     * Returns the {@link OnInner} trigger of the {@link Event}.
+     *
+     * @return The on inner trigger of the event.
+     * @see OnInner
+     */
+	public OnInner getOnInner() {
+		return onInner;
+	}
+	
+	/**
+     * Returns the {@link OnRebound} trigger of the {@link Event}.
+     *
+     * @return The on rebound trigger of the event.
+     * @see OnRebound
+     */
+	public OnRebound getOnRebound() {
+		return onRebound;
+	}	
+}

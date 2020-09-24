@@ -1,0 +1,97 @@
+package $1$.general;
+
+import static java.util.Objects.requireNonNull;
+
+/**
+ * {@linkplain Environment} represents the environment of the simulation.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class Environment {
+
+	private double width;
+	private double height;
+	private double length;
+
+	private Environment(final double width, 
+						final double height, 
+						final double length) {
+		this.width  = width;
+		this.height = height;
+		this.length = length;
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link Environment}.
+     * 
+     * @param width A {@link Double} with the width of the environment. It cannot be null.
+     * @param height A {@link Double} with the height of the environment. It cannot be null.
+     * @param length A {@link Double} with the length of the environment. It cannot be null.
+     * @return A new instance of Environment.
+     * @throws NullPointerException If any of the given arguments is
+     *         {@code null}.
+     */
+	public static Environment environment(final double width, 
+										  final double height, 
+										  final double length) throws NullPointerException {
+		return new Environment(requireNonNull(width), requireNonNull(height), requireNonNull(length));
+	}
+
+	/**
+     * Returns the width of the environment as a {@link Double}.
+     *
+     * @return The width of the environment.
+     */
+	public double getWidth() {
+		return width;
+	}
+
+	/**
+     * Returns the height of the environment as a {@link Double}.
+     *
+     * @return The height of the environment.
+     */
+	public double getHeight() {
+		return height;
+	}
+
+	/**
+     * Returns the length of the environment as a {@link Double}.
+     *
+     * @return The length of the environment.
+     */
+	public double getLength() {
+		return length;
+	}
+
+	/**
+    * Changes the width of the environment.
+    *
+    * @param width A {@link Double} with the width of the environment. It cannot be null.
+    * @throws NullPointerException If a {@code null} width is received.
+    */
+	public void setWidth(final double width) throws NullPointerException {
+		this.width = requireNonNull(width);
+	}
+
+	/**
+    * Changes the height of the environment.
+    *
+    * @param height A {@link Double} with the height of the environment. It cannot be null.
+    * @throws NullPointerException If a {@code null} height is received.
+    */
+	public void setHeight(final double height) throws NullPointerException {
+		this.height = requireNonNull(height);
+	}
+
+	/**
+    * Changes the length of the environment.
+    *
+    * @param length A {@link Double} with the length of the environment. It cannot be null.
+    * @throws NullPointerException If a {@code null} length is received.
+    */
+	public void setLength(final double length) throws NullPointerException {
+		this.length = requireNonNull(length);
+	}
+}

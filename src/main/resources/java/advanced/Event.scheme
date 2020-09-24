@@ -1,0 +1,27 @@
+package $1$.events;
+
+import $1$.agents.molecules.Molecule;
+
+/**
+ * {@linkplain Event} represents a simulated event.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public abstract class Event {
+	final private Class<? extends Molecule> target;
+	
+	protected Event (final Class<? extends Molecule> target){
+		this.target = target;
+	}
+
+	/**
+     * Returns the event {@link Molecule} target class.
+     *
+     * @return The event molecule target.
+     * @see    Molecule
+     */
+	public Class<? extends Molecule> getTarget() {
+		return target;
+	}
+}

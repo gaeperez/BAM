@@ -1,0 +1,91 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+import $1$.agents.molecules.macromolecules.Macromolecule;
+
+/**
+ * {@linkplain Reaction} represents a simulated reaction {@link Event}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Event
+ */
+public class Reaction extends Event{
+	final private Class<? extends Macromolecule>   reactsWith;
+	final private Class<? extends Macromolecule>[] output;
+	final private double 					  km;
+	final private Integer 					  kcat;
+	
+    private Reaction(final Class<? extends Macromolecule>   target,
+					   final Class<? extends Macromolecule>   reactsWith,
+					   final Class<? extends Macromolecule>[] output,
+					   final double                      km, 
+					   final Integer                     kcat) {
+		super(target);
+		this.reactsWith = reactsWith;
+		this.output     = output;
+		this.km         = km;
+		this.kcat       = kcat;
+	}
+	
+    /**
+     * Constructs and returns a new instance of {@link Reaction}.
+     * 
+     * @param target A {@link Macromolecule} class as the event target. It cannot be null.
+     * @param reactsWith A {@link Macromolecule} class as the second molecule of the reaction. 
+     * 		It cannot be null.
+     * @param output An array of {@link Macromolecule} classes as the outputs of the reaction. 
+     * 		It cannot be null.
+     * @param km A {@link Double} as the Km of the reaction. It cannot be null.
+     * @param kcat A {@link Integer} as the Kcat of the reaction. It cannot be null.
+     * @return A new instance of Reaction.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see Macromolecule
+     */	
+	public static Reaction reaction(final Class<? extends Macromolecule>   target,
+									final Class<? extends Macromolecule>   reactsWith,
+									final Class<? extends Macromolecule>[] output,
+									final double   km, 
+									final Integer  kcat) throws NullPointerException{
+		return new Reaction(requireNonNull(target), requireNonNull(reactsWith),
+				            requireNonNull(output), requireNonNull(km), requireNonNull(kcat));
+	}
+
+    /**
+     * Returns the second {@link Macromolecule} class of the reaction.
+     *
+     * @return The second macromolecule of the reaction.
+     * @see    Macromolecule
+     */
+	public Class<? extends Macromolecule> getReactsWith() {
+		return reactsWith;
+	}
+
+    /**
+     * Returns the outputs of the reaction as an array of {@link Macromolecule} classes.
+     *
+     * @return The outputs of the reaction.
+     * @see    Macromolecule
+     */
+	public Class<? extends Macromolecule>[] getOutput() {
+		return output;
+	}
+
+    /**
+     * Returns the Km of the reaction as {@link Double}.
+     *
+     * @return The Km of the reaction.
+     */
+	public double getKm() {
+		return km;
+	}
+
+    /**
+     * Returns the Kcat of the reaction as {@link Integer}.
+     *
+     * @return The Kcat of the reaction.
+     */
+	public Integer getKcat() {
+		return kcat;
+	}	
+}

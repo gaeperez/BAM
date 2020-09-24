@@ -1,0 +1,52 @@
+package $1$.agents.molecules;
+
+import static java.util.Objects.requireNonNull;
+import $1$.common.SubcellularLocation;
+import $1$.agents.Agent;
+import $1$.common.DiffusionRate;
+
+/**
+ * {@linkplain Molecule} represents a simulated molecule.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez 
+ * @see Agent
+ */
+public abstract class Molecule extends Agent{
+	private DiffusionRate     diffusionRate;
+	
+	protected Molecule(final String              name,
+					final double 		      molecularWeight, 
+					final double  			  radius,
+					final String  			  color, 
+					final SubcellularLocation maxMembraneToInner,
+					final SubcellularLocation maxMembraneToOuter,
+					final String              cellOfCreation,
+					final SubcellularLocation membraneOfCreation,
+					final DiffusionRate       diffusionRate){
+		super(name, molecularWeight, radius, color, maxMembraneToInner, maxMembraneToOuter, 
+			      cellOfCreation, membraneOfCreation);		      
+		this.diffusionRate = diffusionRate;
+	}
+
+	/**
+    * Returns the {@link DiffusionRate} of the molecule.
+    *
+    * @return The diffusion rate of the molecule.
+    * @see    DiffusionRate
+    */
+	public DiffusionRate getDiffusionRate() {
+		return diffusionRate;
+	}
+	
+	/**
+    * Changes the diffusion rate of the molecule.
+    *
+    * @param diffusionRate The {@link DiffusionRate} of the molecule.
+    * @throws NullPointerException If a {@code null} diffusionRate is received.
+    * @see DiffusionRate
+    */
+	public void setDiffusionRate(final DiffusionRate diffusionRate) throws NullPointerException {
+		this.diffusionRate = requireNonNull(diffusionRate);
+	}
+}

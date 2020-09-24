@@ -1,0 +1,134 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.Optional;
+
+/**
+ * {@linkplain EventTrigger} represents a trigger of an {@link Event}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Event
+ */
+public class EventTrigger {
+	private Optional<String> onInner;
+	private Optional<String> onRebound;
+	
+	private EventTrigger(final Optional<String> onInner, 
+			             final Optional<String> onRebound) {
+		this.onInner     = onInner;
+		this.onRebound   = onRebound;
+	}
+
+	/**
+     * Constructs and returns a new instance of on inner and on rebound {@link EventTrigger}.
+     * 
+     * @param onInner A {@link String} with the on inner trigger. It cannot be null.
+     * @param onRebound A {@link String} with the on rebound trigger. It cannot be null.
+     * @return A new instance of on inner and on rebound EventTrigger.
+     * @throws NullPointerException If any of the given arguments is
+     *         {@code null}.
+     * @see Event
+     */
+	public static EventTrigger onInnerAndRebound(final String onInner, 
+            					                 final String onRebound) throws NullPointerException {
+		return new EventTrigger(Optional.of(requireNonNull(onInner)), Optional.of(requireNonNull(onRebound)));
+	}
+	
+	/**
+     * Constructs and returns a new instance of on inner {@link EventTrigger}.
+     * 
+     * @param onInner A {@link String} with the on inner trigger. It cannot be null.
+     * @return A new instance of on inner EventTrigger.
+     * @throws NullPointerException If the given argument is {@code null}.
+     * @see Event
+     */
+	public static EventTrigger onInner(final String onInner) throws NullPointerException {
+		return new EventTrigger(Optional.of(requireNonNull(onInner)), Optional.empty());
+	}
+	
+	/**
+     * Constructs and returns a new instance of on rebound {@link EventTrigger}.
+     * 
+     * @param onRebound A {@link String} with the on rebound trigger. It cannot be null.
+     * @return A new instance of on rebound EventTrigger.
+     * @throws NullPointerException If the given argument is {@code null}.
+     * @see Event
+     */
+	public static EventTrigger onRebound(final String onRebound) throws NullPointerException {
+		return new EventTrigger(Optional.empty(), Optional.of(requireNonNull(onRebound)));
+	}
+
+	/**
+     * Returns the on inner trigger as an {@link Optional} of an {@link String}.
+     *
+     * @return The on inner trigger.
+     * @see Optional
+     */	
+	public Optional<String> getOnInner() {
+		return onInner;
+	}
+
+	/**
+     * Returns the on rebound trigger as an {@link Optional} of an {@link String}.
+     *
+     * @return The on rebound trigger.
+     * @see Optional
+     */
+	public Optional<String> getOnRebound() {
+		return onRebound;
+	}
+	
+	/**
+	 * Returns if the on inner trigger is activated.
+	 * 
+	 * @return {@code true} if the on inner trigger is activated, {@code false} otherwise
+	 */
+	public boolean isOnInner(){
+		return onInner.isPresent();
+	}
+
+	/**
+	 * Returns if the on rebound trigger is activated.
+	 * 
+	 * @return {@code true} if the on rebound trigger is activated, {@code false} otherwise
+	 */
+	public boolean isOnReboud(){
+		return onRebound.isPresent();
+	}
+
+	/**
+    * Changes the on inner trigger.
+    *
+    * @param onInner A {@link String} with the on inner trigger. It cannot be null.
+    * @throws NullPointerException If a {@code null} onInner is received.
+    */
+	public void setOnInner(final String onInner) throws NullPointerException {
+		this.onInner = Optional.of(requireNonNull(onInner));
+	}
+	
+	/**
+    * Changes the on rebound trigger.
+    *
+    * @param onRebound A {@link String} with the on rebound trigger. It cannot be null.
+    * @throws NullPointerException If a {@code null} onRebound is received.
+    */
+	public void setOnRebound(final String onRebound) throws NullPointerException {
+		this.onRebound = Optional.of(requireNonNull(onRebound));
+	}
+	
+	/**
+    * Cancels the on inner trigger.
+    */
+	public void cancelOnInner(){
+		this.onInner = Optional.empty();
+	}
+
+	/**
+    * Cancels the on rebound trigger.
+    */	
+	public void cancelInRebound(){
+		this.onRebound = Optional.empty();
+	}
+}

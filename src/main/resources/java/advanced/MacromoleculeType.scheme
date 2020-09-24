@@ -1,0 +1,30 @@
+package $1$.agents.molecules.macromolecules;
+
+/**
+ * {@linkplain MacromoleculeType} represents the type of a {@link Macromolecule}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Macromolecule
+ */
+public enum MacromoleculeType {
+	PROTEIN("Protein"),
+	LIPID("Lipid"),
+	NUCLEIC_ACID("Nucleic acid"),
+	CARBOHYDRATE("Carbohydrate");
+
+	final private String type;
+    
+    private MacromoleculeType(final String type){
+    	this.type = type;
+    }
+    
+    /**
+     * Returns the type of the {@code Macromolecule} as {@link String}.
+     *
+     * @return The type of the macromolecule.
+     */
+    public String getType(){
+    	return this.type;
+    }
+}

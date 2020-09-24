@@ -1,0 +1,71 @@
+package $1$.containers;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * {@linkplain AdvancedContainer} represents an advanced container.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public abstract class AdvancedContainer<T>{
+	private final Map<Class<? extends T>, List<? extends T>> map;
+	private final List<T> list;
+	
+	protected AdvancedContainer(final Map<Class<? extends T>, List<? extends T>> map,
+                      final List<T> list) {
+			this.map  = map;
+			this.list = list;
+	}
+	
+	protected static <T> List<T> feed(final Class<T> agentClass,
+									  final Integer number){
+		final List<T> list = new ArrayList<>();
+		for(int i = 0; i< number; i++){
+			try {
+				final T agent = agentClass.newInstance();
+				list.add(agent);
+			} catch (InstantiationException | IllegalAccessException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+		
+	}
+	
+	/**
+     * Returns the {@link List} of all elements of a specific class.
+     *
+     * @param <A> The specific {@link Class}
+     * @param className The specific {@link Class} to get the list.
+     * @return The list of all elements of a specific class.
+     * @see    List
+     */	
+	@SuppressWarnings("unchecked")
+	public <A> List<A> getByClass(final Class<A> className){
+		return (List<A>) map.get(className);
+	}
+	
+	/**
+     * Returns the {@link List} of all elements.
+     *
+     * @return The list of all elements.
+     * @see    List
+     */
+	public List<T> getList(){
+		return list;
+	}	
+	
+	/**
+     * Returns the {@link Set} of all contained classes.
+     *
+     * @return The list of all contained classes.
+     * @see    Set
+     */
+	public Set<Class<? extends T>> getClasses(){
+		return map.keySet();
+	}
+}

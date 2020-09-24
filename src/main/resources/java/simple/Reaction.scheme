@@ -1,0 +1,126 @@
+package $1$.events;
+
+import static java.util.Objects.requireNonNull;
+import $1$.agents.molecules.macromolecules.Macromolecule;
+
+/**
+ * {@linkplain Reaction} represents a simulated reaction {@link Event}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Event
+ */
+public class Reaction extends Event{
+	private String  reactsWith;
+	private String[]  output;
+	private double  km;
+	private Integer kcat;
+	
+    private Reaction(final String    target,
+					 final String    reactsWith,
+					 final String[]  output,
+					 final double    km, 
+					 final Integer   kcat) {
+		super(target);
+		this.reactsWith = reactsWith;
+		this.output     = output;
+		this.km         = km;
+		this.kcat       = kcat;
+	}
+	
+    /**
+     * Constructs and returns a new instance of {@link Reaction}.
+     * 
+     * @param target A {@link String} as the event target. It cannot be null.
+     * @param reactsWith A {@link String} as the second molecule of the reaction. 
+     * 		It cannot be null.
+     * @param output An array of {@link String} as the outputs of the reaction. 
+     * 		It cannot be null.
+     * @param km A {@link Double} as the Km of the reaction. It cannot be null.
+     * @param kcat A {@link Integer} as the Kcat of the reaction. It cannot be null.
+     * @return A new instance of Reaction.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     */	
+	public static Reaction reaction(final String   target,
+									final String   reactsWith,
+									final String[] output,
+									final double   km, 
+									final Integer  kcat) throws NullPointerException{
+		return new Reaction(requireNonNull(target), requireNonNull(reactsWith),
+				            requireNonNull(output), requireNonNull(km), requireNonNull(kcat));
+	}
+
+    /**
+     * Returns the second molecule of the reaction as {@link String}.
+     *
+     * @return The second macromolecule of the reaction.
+     * @see    Macromolecule
+     */
+	public String getReactsWith() {
+		return reactsWith;
+	}
+
+    /**
+     * Returns the outputs of the reaction as an array of {@link String}.
+     *
+     * @return The outputs of the reaction.
+     * @see    Macromolecule
+     */
+	public String[] getOutput() {
+		return output;
+	}
+
+    /**
+     * Returns the Km of the reaction as {@link Double}.
+     *
+     * @return The Km of the reaction.
+     */
+	public double getKm() {
+		return km;
+	}
+
+    /**
+     * Returns the Kcat of the reaction as {@link Integer}.
+     *
+     * @return The Kcat of the reaction.
+     */
+	public Integer getKcat() {
+		return kcat;
+	}
+
+	/** Changes the second molecule of the reaction.
+    *
+    * @param reactsWith A {@link String} as the second molecule of the reaction.
+    * @throws NullPointerException If a {@code null} reactsWith is received.
+    */
+	public void setReactsWith(final String reactsWith) throws NullPointerException {
+		this.reactsWith = requireNonNull(reactsWith);
+	}
+
+	/** Changes the outputs of the reaction.
+    *
+    * @param output An array of {@link String} as the outputs of the reaction.
+    * @throws NullPointerException If a {@code null} output is received.
+    */
+	public void setOutput(final String[] output) throws NullPointerException {
+		this.output = requireNonNull(output);
+	}
+
+	/** Changes the Km of the reaction.
+    *
+    * @param km A {@link Double} as the Km of the reaction.
+    * @throws NullPointerException If a {@code null} km is received.
+    */
+	public void setKm(final double km) throws NullPointerException {
+		this.km = requireNonNull(km);
+	}
+
+	/** Changes the second molecule of the reaction.
+    *
+    * @param kcat A {@link Integer} as the Kcat of the reaction.
+    * @throws NullPointerException If a {@code null} kcat is received.
+    */
+	public void setKcat(final Integer kcat) throws NullPointerException {
+		this.kcat = requireNonNull(kcat);
+	}
+}

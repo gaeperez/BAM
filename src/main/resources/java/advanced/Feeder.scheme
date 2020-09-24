@@ -1,0 +1,124 @@
+package $1$.feeders;
+
+import static java.util.Objects.requireNonNull;
+
+import java.util.Optional;
+
+import $1$.agents.molecules.Molecule;
+import $1$.cells.Cell;
+import $1$.common.SubcellularLocation;
+
+/**
+ * {@linkplain Feeder} represents a simulated feeder.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class Feeder {
+
+	final private Class<? extends Molecule>       createMolecule;
+	final private FeederType				      type;
+	final private Integer                         creationSteps;
+	final private Integer                         productionNumber;
+	final private Optional<Class<? extends Cell>> feedLocation;
+	final private Optional<Integer>               maxConcentration;
+
+	private Feeder(final Class<? extends Molecule>       createMolecule,
+				   final FeederType                      type,
+				   final Integer                         creationSteps, 
+				   final Integer                         productionNumber,
+			 	   final Optional<Class<? extends Cell>> feedLocation,
+				   final Optional<Integer>               maxConcentration){
+		this.createMolecule    = createMolecule;
+		this.type              = type;
+		this.creationSteps     = creationSteps;
+		this.productionNumber  = productionNumber;
+		this.feedLocation      = feedLocation;
+		this.maxConcentration  = maxConcentration;
+	}
+	
+	/**
+     * Constructs and returns a new instance of a {@link Feeder}.
+     * 
+     * @param createMolecule A {@link Molecule} class with the molecule to feed. It cannot be null.
+     * @param type The {@link FeederType}. It cannot be null.
+     * @param creationSteps A {@link Integer} with the creation steps. It cannot be null.
+     * @param productionNumber A {@link Integer} with the production number. It cannot be null.
+     * @param feedLocation A {@link Cell} class with the location to feed.
+     * 		It cannot be null.
+     * @param maxConcentration A {@link Optional} of {@link Integer} with the maximum concentration of 
+     *      the molecule to feed. It cannot be null.
+     * @return A new instance of Feeder.
+     * @throws NullPointerException If any of the given arguments is {@code null}.
+     * @see SubcellularLocation
+     * @see FeederType
+     * @see Molecule
+     */	
+	public static Feeder feeder(final Class<? extends Molecule>       createMolecule,
+								final FeederType                      type,
+							    final Integer                         creationSteps, 
+							    final Integer                         productionNumber,
+							 	final Optional<Class<? extends Cell>> feedLocation,
+							 	final Optional<Integer>               maxConcentration) throws NullPointerException{
+		return new Feeder(requireNonNull(createMolecule), requireNonNull(type), requireNonNull(creationSteps), 
+				  requireNonNull(productionNumber), requireNonNull(feedLocation), requireNonNull(maxConcentration));
+	}
+
+	/**
+     * Returns the molecule to feed as a {@link Molecule} class.
+     *
+     * @return The molecule to feed.
+     * @see Molecule
+     */
+	public Class<? extends Molecule> getCreateMolecule() {
+		return createMolecule;
+	}
+
+	/**
+     * Returns the {@link FeederType}.
+     *
+     * @return The feederType.
+     * @see FeederType
+     */
+	public FeederType getType() {
+		return type;
+	}
+
+	/**
+     * Returns the creation steps as a {@link Integer}.
+     *
+     * @return The creation steps.
+     */
+	public Integer getCreationSteps() {
+		return creationSteps;
+	}
+	
+	/**
+     * Returns the production number as a {@link Integer}.
+     *
+     * @return The production number.
+     */
+	public Integer getProductionNumber() {
+		return productionNumber;
+	}
+	
+	/**
+     * Returns the feed location as an {@link Optional} of {@link Cell} class.
+     *
+     * @return The feed location. If returns Optional.empty() it means Extracellular location.
+     * @see SubcellularLocation
+     */
+	public Optional<Class<? extends Cell>> getFeedLocation() {
+		return feedLocation;
+	}
+	
+	/**
+     * Returns the maximum concentration of the molecules to feed as an
+     * {@link Optional} of {@link Integer}.
+     *
+     * @return The maximum concentration of the molecules to feed.
+     */
+	public Optional<Integer> getMaxConcentration() {
+		return maxConcentration;
+	}
+}

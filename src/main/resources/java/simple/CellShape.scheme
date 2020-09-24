@@ -1,0 +1,30 @@
+package $1$.cells;
+
+/**
+ * {@linkplain CellShape} represents the shape of a {@link Cell}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see Cell
+ */
+public enum CellShape {
+
+	CAPSULE("capsule"),
+	SPHERE("sphere"),
+	HEMISPHERE("hemisphere");
+
+	final private String shape;
+    
+    private CellShape(final String shape){
+    	this.shape = shape;
+    }
+    
+    /**
+     * Returns the shape of the {@link Cell} as {@link String}.
+     *
+     * @return The shape of the cell.
+     */
+    public String getShape(){
+    	return this.shape;
+    }
+}

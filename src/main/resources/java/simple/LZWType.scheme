@@ -1,0 +1,27 @@
+package $1$.agents.molecules.lzws;
+
+/**
+ * {@linkplain LZWType} represents the type of a {@link LZW}.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ * @see LZW
+ */
+public enum LZWType {
+	LZW("LZW");
+
+	final private String type;
+    
+    private LZWType(final String type){
+    	this.type = type;
+    }
+    
+    /**
+     * Returns the type of the {@code LZW} as {@link String}.
+     *
+     * @return The type of the LZW.
+     */
+    public String getType(){
+    	return this.type;
+    }
+}

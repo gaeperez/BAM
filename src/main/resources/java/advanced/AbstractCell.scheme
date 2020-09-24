@@ -1,0 +1,39 @@
+package $1$.cells;
+
+/**
+ * {@linkplain Cell} represents a simulated cell.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public abstract class Cell {
+
+	final private CellShape      shape;
+	final private CellMembrane[] membranes;
+	
+	protected Cell(final CellShape      shape,
+				   final CellMembrane[] membranes) {
+		this.shape      = shape;
+		this.membranes  = membranes;
+	}
+
+	 /**
+     * Returns the {@link CellShape} of the cell.
+     *
+     * @return The shape of the cell.
+     * @see    CellShape
+     */
+	public CellShape getShape() {
+		return shape;
+	}
+
+	/**
+     * Returns the {@link CellMembrane} of the cell.
+     *
+     * @return The membrane of the cell.
+     * @see    CellMembrane
+     */
+	public CellMembrane[] getLayers() {
+		return membranes;
+	}
+}

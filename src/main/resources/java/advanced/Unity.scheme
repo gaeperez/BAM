@@ -1,0 +1,68 @@
+package $5$.general;
+
+import static $5$.common.DiffusionRate.diffusionRate;
+import $5$.common.DiffusionRate;
+
+/**
+ * {@linkplain Unity} represents the unity of the simulation.
+ *
+ * @author Aitor Blanco Míguez
+ * @author Gael Pérez Rodríguez
+ */
+public class Unity {
+
+	final private String        name 			= "$1$";
+	final private double        molecularWeight = $2$;
+	final private double        radius 		    = $3$;
+	final private DiffusionRate diffusionRate   = diffusionRate($4$);
+
+	private Unity() {
+
+	}
+	
+	/**
+     * Constructs and returns a new instance of {@link Unity}.
+     *
+     * @return A new instance of Unity.
+     */
+	public static Unity unity(){
+		return new Unity();
+	}
+
+	/**
+     * Returns the name of the unity as a {@link String}.
+     *
+     * @return The name of the unity.
+     */
+	public String getName() {
+		return name;
+	}
+
+	/**
+     * Returns the molecular weight of the unity as a {@link Double}.
+     *
+     * @return The molecular weight of the unity.
+     */
+	public double getMolecularWeight() {
+		return molecularWeight;
+	}
+
+	/**
+     * Returns the radius of the unity as a {@link Double}.
+     *
+     * @return The radius of the unity.
+     */
+	public double getRadius() {
+		return radius;
+	}
+
+	/**
+     * Returns the {@link DiffusionRate} of the unity.
+     *
+     * @return The diffusion rate of the unity.
+     * @see DiffusionRate
+     */
+	public DiffusionRate getDiffusionRate() {
+		return diffusionRate;
+	}
+}
